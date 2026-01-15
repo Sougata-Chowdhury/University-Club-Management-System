@@ -1,0 +1,32 @@
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+
+async function bootstrap() {
+  try {
+    const app = await NestFactory.create(AppModule);
+    
+    // Enable CORS for frontend communication
+    app.enableCors({
+      origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+      credentials: true,
+    });
+    
+    const port = process.env.BACKEND_PORT || 8000;
+    console.log(`Attempting to bind to port ${port} on all interfaces...`);
+    
+    const server = await app.listen(port, '0.0.0.0');
+    console.log(`Backend running on http://localhost:${port} - Fixed`);  
+    console.log(`Also accessible on http://0.0.0.0:${port}`);
+    console.log(`Server object:`, !!server);
+    
+    // Test if server is actually listening
+    const address = server.address();
+    console.log(`Server address:`, address);
+    
+  } catch (error) {
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  }
+}
+bootstrap();

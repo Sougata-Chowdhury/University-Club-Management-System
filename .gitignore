@@ -1,0 +1,41 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+package-lock.json
+
+# Build
+dist/
+build/
+coverage/
+.vscode/
+.idea/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Frontend
+frontend/node_modules/
+frontend/build/
+frontend/.cache/
+
+# Backend
+backend/node_modules/
+backend/dist/
+backend/uploads/
+backend/.env
+
+# Misc
+*.tgz
+*.zip
