@@ -5,6 +5,7 @@ WORKDIR /app/backend
 
 # Copy package files
 COPY backend/package*.json ./
+COPY backend/package-lock.json ./
 
 # Install dependencies
 RUN npm ci
@@ -22,9 +23,10 @@ WORKDIR /app
 
 # Copy package files
 COPY backend/package*.json ./
+COPY backend/package-lock.json ./
 
 # Install production dependencies only
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
 # Copy built application from builder
 COPY --from=builder /app/backend/dist ./dist
