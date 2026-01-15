@@ -1,16 +1,16 @@
 # Build stage
 FROM node:18-alpine AS builder
 
-WORKDIR /app
+WORKDIR /app/backend
 
 # Copy package files
-COPY package*.json ./
+COPY backend/package*.json ./
 
 # Install dependencies
 RUN npm ci
 
 # Copy source files
-COPY . .
+COPY backend/ ./
 
 # Build the application
 RUN npm run build
@@ -21,13 +21,13 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy package files
-COPY package*.json ./
+COPY backend/package*.json ./
 
 # Install production dependencies only
 RUN npm ci --only=production
 
 # Copy built application from builder
-COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/backend/dist ./dist
 
 # Expose port (Render uses PORT env variable)
 EXPOSE ${PORT:-8000}
