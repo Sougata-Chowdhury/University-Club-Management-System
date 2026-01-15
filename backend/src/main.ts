@@ -7,12 +7,12 @@ async function bootstrap() {
     
     // Enable CORS for frontend communication
     app.enableCors({
-      origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+      origin: process.env.CORS_ORIGIN || process.env.FRONTEND_URL || 'http://localhost:3000',
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
       credentials: true,
     });
     
-    const port = process.env.BACKEND_PORT || 8000;
+    const port = process.env.PORT || process.env.BACKEND_PORT || 8000;
     console.log(`Attempting to bind to port ${port} on all interfaces...`);
     
     const server = await app.listen(port, '0.0.0.0');
