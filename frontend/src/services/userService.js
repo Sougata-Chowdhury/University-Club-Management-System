@@ -1,6 +1,9 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
+const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || 
+  (process.env.NODE_ENV === 'production' 
+    ? 'https://university-club-management-system.onrender.com'
+    : 'http://localhost:8000');
 
 // Create axios instance with default config
 const api = axios.create({
