@@ -21,6 +21,7 @@ import { diskStorage } from 'multer';
 import { extname } from 'path';
 import { AuthGuard } from '../guards/auth.guard';
 import { UserService } from './user.service';
+import { FileService } from '../file/file.service';
 import {
   UpdateUserProfileDto,
   UpdateUserSettingsDto,
@@ -31,7 +32,7 @@ import {
 @Controller('users')
 @UseGuards(AuthGuard)
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(private readonly userService: UserService, private readonly fileService: FileService) {}
 
   @Get('profile')
   async getProfile(@Request() req): Promise<UserResponseDto> {
@@ -77,8 +78,8 @@ export class UserController {
       throw new BadRequestException('No file uploaded');
     }
 
-    const profilePictureUrl = `/uploads/profiles/${file.filename}`;
-    return this.userService.updateUserProfile(req.user.userId, { profilePicture: profilePictureUrl });
+    const uploaded = await this.fileService.uploadFile(file, { category: 'profile', relatedId: req.user.userId, isPublic: true } as any, req.user.userId);
+    return this.userService.updateUserProfile(req.user.userId, { profilePicture: uploaded.url });
   }
 
   @Put('settings')

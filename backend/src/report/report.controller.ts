@@ -19,11 +19,12 @@ import { extname } from 'path';
 import { AuthGuard } from '../guards/auth.guard';
 import { AdminGuard } from '../guards/admin.guard';
 import { ReportService } from './report.service';
+import { FileService } from '../file/file.service';
 import { CreateReportDto, UpdateReportStatusDto, ReportQueryDto, ReportResponseDto, ReportStatsDto } from './report.dto';
 
 @Controller('reports')
 export class ReportController {
-  constructor(private readonly reportService: ReportService) {}
+  constructor(private readonly reportService: ReportService, private readonly fileService: FileService) {}
 
   @Post()
   @UseGuards(AuthGuard)
@@ -55,10 +56,10 @@ export class ReportController {
   ): Promise<ReportResponseDto> {
     console.log('ReportController: Creating report:', createReportDto);
 
-    // Add file URLs to the DTO
+    // Upload attachments via FileService and add URLs to the DTO
     if (files && files.length > 0) {
-      const baseUrl = process.env.BASE_URL || 'http://localhost:8000';
-      createReportDto.attachments = files.map(file => `${baseUrl}/reports/attachment/${file.filename}`);
+      const uploaded = await this.fileService.uploadMultipleFiles(files, { category: 'report' } as any, req.user.userId);
+      createReportDto.attachments = uploaded.map(f => f.url);
     }
 
     return this.reportService.createReport(createReportDto, req.user.userId);

@@ -15,6 +15,7 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AnnouncementService } from './announcement.service';
+import { FileService } from '../file/file.service';
 import { CreateAnnouncementDto, UpdateAnnouncementDto } from '../dto/announcement.dto';
 import { AuthGuard } from '../guards/auth.guard';
 import { AdminGuard } from '../guards/admin.guard';
@@ -23,7 +24,7 @@ import { extname } from 'path';
 
 @Controller('announcements')
 export class AnnouncementController {
-  constructor(private readonly announcementService: AnnouncementService) {}
+  constructor(private readonly announcementService: AnnouncementService, private readonly fileService: FileService) {}
 
   @Post()
   @UseGuards(AuthGuard)
@@ -51,9 +52,11 @@ export class AnnouncementController {
     @Request() req
   ) {
     if (file) {
-      createAnnouncementDto.image = `/uploads/announcements/${file.filename}`;
+      const relatedId = (createAnnouncementDto as any).clubId || null;
+      const uploaded = await this.fileService.uploadFile(file, { category: 'announcement', relatedId } as any, req.user.userId);
+      createAnnouncementDto.image = uploaded.url;
     }
-    
+
     return this.announcementService.createAnnouncement(createAnnouncementDto, req.user.userId);
   }
 
@@ -139,9 +142,11 @@ export class AnnouncementController {
     @Request() req
   ) {
     if (file) {
-      updateAnnouncementDto.image = `/uploads/announcements/${file.filename}`;
+      const relatedId = (updateAnnouncementDto as any).clubId || null;
+      const uploaded = await this.fileService.uploadFile(file, { category: 'announcement', relatedId } as any, req.user.userId);
+      updateAnnouncementDto.image = uploaded.url;
     }
-    
+
     return this.announcementService.updateAnnouncement(id, updateAnnouncementDto, req.user.userId);
   }
 

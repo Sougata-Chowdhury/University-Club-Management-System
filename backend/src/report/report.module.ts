@@ -8,6 +8,7 @@ import { EventModule } from '../event/event.module';
 import { ClubModule } from '../club/club.module';
 import { AnnouncementModule } from '../announcement/announcement.module';
 import { AuthModule } from '../auth/auth.module';
+import { FileModule } from '../file/file.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { AuthModule } from '../auth/auth.module';
     ClubModule,
     AnnouncementModule,
     AuthModule,
+    FileModule,
   ],
   controllers: [ReportController],
   providers: [ReportService],

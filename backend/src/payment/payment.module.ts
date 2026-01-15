@@ -9,6 +9,7 @@ import { Club, ClubSchema } from '../schemas/club.schema';
 import { User, UserSchema } from '../schemas/user.schema';
 import { AuthModule } from '../auth/auth.module';
 import { NotificationModule } from '../notification/notification.module';
+import { FileModule } from '../file/file.module';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
@@ -31,6 +32,7 @@ import { extname } from 'path';
     }),
     AuthModule,
     forwardRef(() => NotificationModule),
+    FileModule,
   ],
   controllers: [PaymentController],
   providers: [PaymentService],

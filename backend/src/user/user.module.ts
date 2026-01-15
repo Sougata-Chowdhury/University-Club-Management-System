@@ -5,6 +5,7 @@ import { UserController } from './user.controller';
 import { UserService } from './user.service';
 import { User, UserSchema } from '../schemas/user.schema';
 import { AuthModule } from '../auth/auth.module';
+import { FileModule } from '../file/file.module';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
 
@@ -20,7 +21,8 @@ import { extname } from 'path';
         },
       }),
     }),
-    AuthModule
+    AuthModule,
+    FileModule,
   ],
   controllers: [UserController],
   providers: [UserService],

@@ -49,6 +49,12 @@ export class File extends Document {
     duration?: number; // For videos
     thumbnailPath?: string;
   };
+  
+  @Prop({ type: Object })
+  cloudinary?: {
+    public_id?: string;
+    resource_type?: string;
+  };
 }
 
 export const FileSchema = SchemaFactory.createForClass(File);

@@ -182,11 +182,16 @@ export class FileController {
   async serveFile(
     @Param('id') id: string,
     @Res({ passthrough: true }) res: Response,
-  ): Promise<StreamableFile> {
+  ): Promise<any> {
     console.log('FileController: Serving file:', id);
     
     const { file, path } = await this.fileService.serveFile(id);
-    
+    // If the stored path is a URL (Cloudinary), redirect to it
+    if (typeof file.path === 'string' && file.path.startsWith('http')) {
+      res.redirect(file.path);
+      return;
+    }
+
     res.set({
       'Content-Type': file.mimetype,
       'Content-Disposition': `inline; filename="${file.originalname}"`,
@@ -201,11 +206,17 @@ export class FileController {
   async serveThumbnail(
     @Param('id') id: string,
     @Res({ passthrough: true }) res: Response,
-  ): Promise<StreamableFile> {
+  ): Promise<any> {
     console.log('FileController: Serving thumbnail for file:', id);
     
     const { file, path } = await this.fileService.serveThumbnail(id);
-    
+    // If thumbnailPath is a URL (Cloudinary), redirect to it
+    const thumbPath = file.metadata?.thumbnailPath || path;
+    if (typeof thumbPath === 'string' && thumbPath.startsWith('http')) {
+      res.redirect(thumbPath);
+      return;
+    }
+
     res.set({
       'Content-Type': 'image/jpeg',
       'Content-Disposition': `inline; filename="${file.filename}_thumb.jpg"`,
@@ -220,11 +231,16 @@ export class FileController {
   async downloadFile(
     @Param('id') id: string,
     @Res({ passthrough: true }) res: Response,
-  ): Promise<StreamableFile> {
+  ): Promise<any> {
     console.log('FileController: Downloading file:', id);
     
     const { file, path } = await this.fileService.serveFile(id);
-    
+    // If stored on Cloudinary (URL), redirect to it to let the browser download
+    if (typeof file.path === 'string' && file.path.startsWith('http')) {
+      res.redirect(file.path);
+      return;
+    }
+
     res.set({
       'Content-Type': file.mimetype,
       'Content-Disposition': `attachment; filename="${file.originalname}"`,

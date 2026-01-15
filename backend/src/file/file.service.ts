@@ -6,6 +6,14 @@ import { UploadFileDto, UpdateFileDto, FileQueryDto, FileResponseDto } from './f
 import * as fs from 'fs';
 import * as path from 'path';
 import sharp from 'sharp';
+import { v2 as cloudinary } from 'cloudinary';
+
+// Configure Cloudinary using environment variables
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 @Injectable()
 export class FileService {
@@ -61,6 +69,36 @@ export class FileService {
           console.warn('Failed to process image metadata:', error);
         }
       }
+
+      // Upload file to Cloudinary
+      try {
+        const uploadResult: any = await cloudinary.uploader.upload(file.path, {
+          folder: 'cse470',
+        });
+
+        fileDocument.path = uploadResult.secure_url;
+        fileDocument.cloudinary = {
+          public_id: uploadResult.public_id,
+          resource_type: uploadResult.resource_type,
+        };
+      } catch (err) {
+        console.warn('Cloudinary upload failed, falling back to local path:', err);
+      }
+
+      // Upload thumbnail (if created) to Cloudinary
+      if (fileDocument.metadata?.thumbnailPath) {
+        try {
+          const thumbUpload: any = await cloudinary.uploader.upload(fileDocument.metadata.thumbnailPath, {
+            folder: 'cse470/thumbnails',
+          });
+          fileDocument.metadata.thumbnailPath = thumbUpload.secure_url;
+        } catch (err) {
+          console.warn('Cloudinary thumbnail upload failed:', err);
+        }
+      }
+
+      // Attempt to remove local original file after upload
+      try { fs.unlinkSync(file.path); } catch (e) { /* ignore */ }
 
       const savedFile = await fileDocument.save();
       return this.toFileResponseDto(savedFile);

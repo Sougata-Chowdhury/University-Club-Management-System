@@ -14,6 +14,7 @@ import {
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { PaymentService } from './payment.service';
+import { FileService } from '../file/file.service';
 import { CreatePaymentDto, UpdatePaymentDto, ApprovePaymentDto } from '../dto/payment.dto';
 import { AuthGuard } from '../guards/auth.guard';
 import { diskStorage } from 'multer';
@@ -21,7 +22,7 @@ import { extname } from 'path';
 
 @Controller('payments')
 export class PaymentController {
-  constructor(private readonly paymentService: PaymentService) {}
+  constructor(private readonly paymentService: PaymentService, private readonly fileService: FileService) {}
 
   @Post()
   @UseGuards(AuthGuard)
@@ -49,9 +50,11 @@ export class PaymentController {
     @Request() req
   ) {
     if (file) {
-      createPaymentDto.proofOfPayment = `/uploads/payments/${file.filename}`;
+      const relatedId = (createPaymentDto as any).clubId || null;
+      const uploaded = await this.fileService.uploadFile(file, { category: 'payment', relatedId } as any, req.user.userId);
+      createPaymentDto.proofOfPayment = uploaded.url;
     }
-    
+
     return this.paymentService.createPayment(createPaymentDto, req.user.userId);
   }
 
@@ -141,9 +144,11 @@ export class PaymentController {
     @Request() req
   ) {
     if (file) {
-      updatePaymentDto.proofOfPayment = `/uploads/payments/${file.filename}`;
+      const relatedId = (updatePaymentDto as any).clubId || null;
+      const uploaded = await this.fileService.uploadFile(file, { category: 'payment', relatedId } as any, req.user.userId);
+      updatePaymentDto.proofOfPayment = uploaded.url;
     }
-    
+
     return this.paymentService.updatePayment(id, updatePaymentDto, req.user.userId);
   }
 
