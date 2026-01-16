@@ -233,14 +233,14 @@ const FeedbackList = ({ targetType = null, targetId = null, targetName = null, s
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       {/* Navigation Bar */}
-      <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20 sticky top-0 z-50 shadow-lg">
+      <nav className="bg-purple-600 border-b border-purple-700 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
           <div className="flex justify-between items-center h-14">
             {/* Logo */}
             <Link to="/dashboard" className="flex items-center space-x-2">
-              <div className="bg-white/20 rounded-lg p-1.5">
+              <div className="bg-purple-500 rounded-lg p-1.5">
                 <UserGroupIcon className="h-5 w-5 text-white" />
               </div>
               <h1 className="text-white text-base font-bold hidden sm:block">Club Portal</h1>
@@ -347,34 +347,34 @@ const FeedbackList = ({ targetType = null, targetId = null, targetName = null, s
         {/* Statistics */}
         {showStats && stats && (
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 mb-4">
-            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-3 border border-purple-400/30">
+            <div className="bg-white rounded-xl p-3 border border-purple-200 shadow-lg">
               <div className="flex items-center justify-between mb-1">
-                <ChatBubbleLeftRightIcon className="h-5 w-5 text-purple-300" />
-                <span className="text-xl font-bold text-white">{stats.totalFeedback}</span>
+                <ChatBubbleLeftRightIcon className="h-5 w-5 text-purple-600" />
+                <span className="text-xl font-bold text-gray-900">{stats.totalFeedback}</span>
               </div>
-              <p className="text-purple-200 text-xs">Total Feedback</p>
+              <p className="text-purple-700 text-xs">Total Feedback</p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-3 border border-yellow-400/30">
+            <div className="bg-white rounded-xl p-3 border border-yellow-200 shadow-lg">
               <div className="flex items-center justify-between mb-1">
-                <StarIcon className="h-5 w-5 text-yellow-300" />
-                <span className="text-xl font-bold text-white">{stats.averageRating.toFixed(1)}</span>
+                <StarIcon className="h-5 w-5 text-yellow-600" />
+                <span className="text-xl font-bold text-gray-900">{stats.averageRating.toFixed(1)}</span>
               </div>
-              <p className="text-yellow-200 text-xs">Avg Rating</p>
+              <p className="text-yellow-700 text-xs">Avg Rating</p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-3 border border-blue-400/30">
+            <div className="bg-white rounded-xl p-3 border border-blue-200 shadow-lg">
               <div className="flex items-center justify-between mb-1">
-                <ChartBarIcon className="h-5 w-5 text-blue-300" />
-                <span className="text-xl font-bold text-white">{stats.recentFeedback}</span>
+                <ChartBarIcon className="h-5 w-5 text-blue-600" />
+                <span className="text-xl font-bold text-gray-900">{stats.recentFeedback}</span>
               </div>
-              <p className="text-blue-200 text-xs">Last 30 Days</p>
+              <p className="text-blue-700 text-xs">Last 30 Days</p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-3 border border-green-400/30">
+            <div className="bg-white rounded-xl p-3 border border-green-200 shadow-lg">
               <div className="flex items-center justify-between mb-1">
-                <HandThumbUpIcon className="h-5 w-5 text-green-300" />
-                <span className="text-xl font-bold text-white">
+                <HandThumbUpIcon className="h-5 w-5 text-green-600" />
+                <span className="text-xl font-bold text-gray-900">
                   {feedback.reduce((sum, fb) => sum + (fb.helpfulVotes || 0), 0)}
                 </span>
               </div>

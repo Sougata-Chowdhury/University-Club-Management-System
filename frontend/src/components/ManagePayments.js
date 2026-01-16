@@ -223,26 +223,26 @@ const ManagePayments = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 text-white p-8">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 p-8">
       {/* Navigation */}
-      <nav className="bg-white/10 backdrop-blur-lg rounded-lg mb-8 p-4">
+      <nav className="bg-white rounded-lg mb-8 p-4 border border-gray-200 shadow-lg">
         <div className="flex items-center justify-between">
-          <Link to="/dashboard" className="text-white text-xl font-bold">
+          <Link to="/dashboard" className="text-gray-900 text-xl font-bold">
             University Clubs
           </Link>
           <div className="flex items-center space-x-4">
             {clubId && (
               <Link 
                 to={`/manage-club/${clubId}`} 
-                className="text-purple-300 hover:text-purple-200 transition-colors"
+                className="text-purple-600 hover:text-purple-700 transition-colors"
               >
                 ← Back to Manage Club
               </Link>
             )}
-            <Link to="/my-clubs" className="text-white hover:text-gray-300 transition-colors">
+            <Link to="/my-clubs" className="text-gray-700 hover:text-purple-600 transition-colors">
               My Clubs
             </Link>
-            <Link to="/dashboard" className="text-white hover:text-gray-300 transition-colors">
+            <Link to="/dashboard" className="text-gray-700 hover:text-purple-600 transition-colors">
               Dashboard
             </Link>
           </div>

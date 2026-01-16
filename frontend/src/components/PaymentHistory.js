@@ -210,22 +210,22 @@ const PaymentHistory = () => {
 // Separate PaymentHistoryCard component for better organization
 const PaymentHistoryCard = ({ payment, formatCurrency, formatDate }) => {
   return (
-    <div className="bg-white/10 backdrop-blur-lg rounded-lg border border-white/20 p-6">
+    <div className="bg-white rounded-lg border border-gray-200 shadow-lg p-6">
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-start space-x-4 flex-1">
           <div className="flex-shrink-0">
             <CheckCircleIcon className="w-6 h-6 text-green-500" />
           </div>
           <div className="flex-1">
-            <h3 className="text-xl font-semibold text-white mb-2">
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">
               {payment.eventId?.name || 'Event Deleted'}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div className="flex items-center space-x-2 text-gray-300">
+              <div className="flex items-center space-x-2 text-gray-700">
                 <UserIcon className="w-4 h-4" />
                 <span>{payment.userId?.firstName} {payment.userId?.lastName} ({payment.userId?.email})</span>
               </div>
-              <div className="flex items-center space-x-2 text-gray-300">
+              <div className="flex items-center space-x-2 text-gray-700">
                 <CalendarIcon className="w-4 h-4" />
                 <span>Paid: {formatDate(payment.approvedAt || payment.createdAt)}</span>
               </div>

@@ -187,14 +187,14 @@ const PaymentPage = () => {
 
   if (success) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 text-white flex items-center justify-center">
-        <div className="text-center bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 max-w-md">
-          <CheckCircleIcon className="w-16 h-16 text-green-400 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold mb-4">Payment Submitted Successfully!</h2>
-          <p className="text-gray-300 mb-4">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
+        <div className="text-center bg-white rounded-2xl p-8 border border-gray-200 shadow-xl max-w-md">
+          <CheckCircleIcon className="w-16 h-16 text-green-600 mx-auto mb-4" />
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Payment Submitted Successfully!</h2>
+          <p className="text-gray-700 mb-4">
             Your payment has been submitted and is pending approval from the club organizers.
           </p>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-600">
             You will be redirected to the dashboard shortly...
           </p>
         </div>
@@ -203,11 +203,11 @@ const PaymentPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 text-white p-8">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 p-8">
       <div className="max-w-2xl mx-auto">
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 overflow-hidden">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
           {/* Header */}
-          <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-6">
+          <div className="bg-purple-600 p-6">
             <div className="flex items-center space-x-3">
               <CreditCardIcon className="w-8 h-8 text-white" />
               <h1 className="text-2xl font-bold">Event Payment</h1>

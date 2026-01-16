@@ -138,14 +138,14 @@ const FeedbackPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       {/* Navigation Bar */}
-      <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20 sticky top-0 z-50 shadow-lg">
+      <nav className="bg-purple-600 border-b border-purple-700 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
           <div className="flex justify-between items-center h-14">
             {/* Logo */}
             <Link to="/dashboard" className="flex items-center space-x-2">
-              <div className="bg-white/20 rounded-lg p-1.5">
+              <div className="bg-purple-500 rounded-lg p-1.5">
                 <UserGroupIcon className="h-5 w-5 text-white" />
               </div>
               <h1 className="text-white text-base font-bold hidden sm:block">Club Portal</h1>
@@ -183,7 +183,7 @@ const FeedbackPage = () => {
                 )}
               </div>
 
-              <Link to="/dashboard" className="bg-white/20 hover:bg-white/30 text-white px-2 sm:px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 border border-white/30 text-sm">
+              <Link to="/dashboard" className="bg-purple-500 hover:bg-purple-700 text-white px-2 sm:px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 border border-purple-700 text-sm">
                 <HomeIcon className="h-4 w-4" />
                 <span className="hidden sm:inline">Dashboard</span>
               </Link>
@@ -250,7 +250,7 @@ const FeedbackPage = () => {
         {/* Statistics */}
         {stats && (
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 mb-4">
-            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-3 border border-purple-400/30">
+            <div className="bg-white rounded-xl p-3 border border-purple-200 shadow-lg">
               <div className="flex items-center justify-between mb-1">
                 <ChatBubbleLeftRightIcon className="h-5 w-5 text-purple-300" />
                 <span className="text-xl font-bold text-white">{stats.totalFeedback || 0}</span>
@@ -258,7 +258,7 @@ const FeedbackPage = () => {
               <p className="text-purple-200 text-xs">Total Reviews</p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-3 border border-yellow-400/30">
+            <div className="bg-white rounded-xl p-3 border border-yellow-200 shadow-lg">
               <div className="flex items-center justify-between mb-1">
                 <StarIcon className="h-5 w-5 text-yellow-300" />
                 <span className="text-xl font-bold text-white">
@@ -268,7 +268,7 @@ const FeedbackPage = () => {
               <p className="text-yellow-200 text-xs">Average Rating</p>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-3 border border-green-400/30">
+            <div className="bg-white rounded-xl p-3 border border-green-200 shadow-lg">
               <div className="flex items-center justify-between mb-1">
                 <ChartBarIcon className="h-5 w-5 text-green-300" />
                 <span className="text-xl font-bold text-white">{stats.thisMonth || 0}</span>
@@ -286,7 +286,7 @@ const FeedbackPage = () => {
         )}
 
         {/* Search and Tabs */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-xl border border-white/20 mb-3">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-lg mb-3">
           {/* Search */}
           <div className="p-3 border-b border-white/10">
             <div className="relative">
@@ -328,7 +328,7 @@ const FeedbackPage = () => {
           )}
 
           {!loading && feedback.length === 0 && (
-            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 text-center border border-white/20">
+            <div className="bg-white rounded-xl p-8 text-center border border-gray-200 shadow-lg">
               <ChatBubbleLeftRightIcon className="h-12 w-12 text-gray-400 mx-auto mb-3" />
               <h3 className="text-lg font-bold text-white mb-1">No feedback found</h3>
               <p className="text-gray-300 text-sm">Be the first to share your thoughts!</p>
@@ -338,7 +338,7 @@ const FeedbackPage = () => {
           {!loading && feedback.map((item) => {
             const statusInfo = getStatusInfo(item.status);
             return (
-              <div key={item._id} className="bg-white/10 backdrop-blur-lg rounded-xl p-3 border border-white/20">
+              <div key={item._id} className="bg-white rounded-xl p-3 border border-gray-200 shadow-lg">
                 {/* Header */}
                 <div className="flex justify-between items-start mb-2">
                   <div className="flex items-center space-x-2 flex-1">
