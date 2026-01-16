@@ -250,28 +250,28 @@ const EventDetails = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 text-white flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 text-gray-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
       </div>
     );
   }
 
   if (!event) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 text-white flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 text-gray-900 flex items-center justify-center">
         <div className="text-center">
           <h2 className="text-2xl font-bold mb-2">Event Not Found</h2>
-          <p className="text-gray-400">The event you're looking for doesn't exist.</p>
+          <p className="text-gray-600">The event you're looking for doesn't exist.</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 text-gray-900">
       <div className="max-w-4xl mx-auto p-8">
         {/* Event Header */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 overflow-hidden mb-8">
+        <div className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden mb-8">
           <div className="p-8">
             <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-6">
               <div className="flex-1">
@@ -292,13 +292,13 @@ const EventDetails = () => {
                     />
                   )}
                 </div>
-                <p className="text-gray-300 text-lg mb-4">{event.description}</p>
+                <p className="text-gray-700 text-lg mb-4">{event.description}</p>
                 
-                <div className="flex items-center space-x-4 text-sm text-gray-400 mb-4">
-                  <span className="bg-blue-900/50 px-3 py-1 rounded-full">
+                <div className="flex items-center space-x-4 text-sm text-gray-700 mb-4">
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full">
                     {event.club?.name}
                   </span>
-                  <span className="bg-purple-900/50 px-3 py-1 rounded-full">
+                  <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full">
                     {event.category}
                   </span>
                 </div>
@@ -306,7 +306,7 @@ const EventDetails = () => {
 
               {/* Price Display */}
               {event.isPaid && (
-                <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg p-4 text-center lg:ml-6">
+                <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white rounded-lg p-4 text-center lg:ml-6">
                   <div className="flex items-center justify-center space-x-2 mb-2">
                     <CurrencyDollarIcon className="w-6 h-6" />
                     <span className="text-sm font-medium">Event Fee</span>
@@ -318,7 +318,7 @@ const EventDetails = () => {
               )}
 
               {!event.isPaid && (
-                <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-lg p-4 text-center lg:ml-6">
+                <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-lg p-4 text-center lg:ml-6">
                   <div className="flex items-center justify-center space-x-2 mb-2">
                     <CheckCircleIcon className="w-6 h-6" />
                     <span className="text-sm font-medium">Free Event</span>
@@ -333,34 +333,34 @@ const EventDetails = () => {
             {/* Event Details Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               <div className="flex items-center space-x-3">
-                <CalendarIcon className="w-6 h-6 text-blue-400" />
+                <CalendarIcon className="w-6 h-6 text-purple-600" />
                 <div>
-                  <p className="text-sm text-gray-400">Date</p>
-                  <p className="font-semibold">{formatDate(event.date)}</p>
+                  <p className="text-sm text-gray-600">Date</p>
+                  <p className="font-semibold text-gray-900">{formatDate(event.date)}</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-3">
-                <ClockIcon className="w-6 h-6 text-green-400" />
+                <ClockIcon className="w-6 h-6 text-purple-600" />
                 <div>
-                  <p className="text-sm text-gray-400">Time</p>
-                  <p className="font-semibold">{formatTime(event.date)}</p>
+                  <p className="text-sm text-gray-600">Time</p>
+                  <p className="font-semibold text-gray-900">{formatTime(event.date)}</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-3">
-                <MapPinIcon className="w-6 h-6 text-red-400" />
+                <MapPinIcon className="w-6 h-6 text-purple-600" />
                 <div>
-                  <p className="text-sm text-gray-400">Location</p>
-                  <p className="font-semibold">{event.location}</p>
+                  <p className="text-sm text-gray-600">Location</p>
+                  <p className="font-semibold text-gray-900">{event.location}</p>
                 </div>
               </div>
 
               <div className="flex items-center space-x-3">
-                <UserGroupIcon className="w-6 h-6 text-purple-400" />
+                <UserGroupIcon className="w-6 h-6 text-purple-600" />
                 <div>
-                  <p className="text-sm text-gray-400">Attendees</p>
-                  <p className="font-semibold">
+                  <p className="text-sm text-gray-600">Attendees</p>
+                  <p className="font-semibold text-gray-900">
                     {event.attendees?.length || 0} / {event.maxAttendees || '∞'}
                   </p>
                 </div>
@@ -369,7 +369,7 @@ const EventDetails = () => {
 
             {/* Registration Status */}
             {error && (
-              <div className="bg-red-500/20 border border-red-400 text-red-200 px-4 py-3 rounded mb-6">
+              <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded mb-6">
                 {error}
               </div>
             )}
@@ -377,7 +377,7 @@ const EventDetails = () => {
             {/* Action Button */}
             <div className="flex justify-center space-x-4">
               {isEnrolled ? (
-                <div className="flex items-center space-x-2 bg-green-900/50 text-green-300 px-8 py-3 rounded-lg font-semibold border-2 border-green-500/50">
+                <div className="flex items-center space-x-2 bg-green-50 text-green-800 px-8 py-3 rounded-lg font-semibold border-2 border-green-200">
                   <CheckCircleIcon className="w-5 h-5" />
                   <span>Already Registered ✓</span>
                 </div>
@@ -396,7 +396,7 @@ const EventDetails = () => {
                     <button
                       onClick={handleEnrollment}
                       disabled={enrolling || isEnrolled}
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
+                      className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-2"
                     >
                       {enrolling ? (
                         <>
@@ -441,10 +441,10 @@ const EventDetails = () => {
 
         {/* Event Content */}
         {event.content && (
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 p-8">
-            <h2 className="text-2xl font-bold mb-4">Event Details</h2>
-            <div className="prose prose-invert max-w-none">
-              <p className="text-gray-300 whitespace-pre-wrap">{event.content}</p>
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-lg p-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Event Details</h2>
+            <div className="prose prose-gray max-w-none">
+              <p className="text-gray-700 whitespace-pre-wrap">{event.content}</p>
             </div>
           </div>
         )}

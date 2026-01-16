@@ -105,19 +105,19 @@ const CreateEvent = () => {
   const minDate = today.toISOString().slice(0, 16);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       {/* Navigation */}
-      <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20">
+      <nav className="bg-purple-600 border-b border-purple-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/dashboard" className="text-white text-xl font-bold">
               University Clubs
             </Link>
             <div className="flex items-center space-x-4">
-              <Link to="/my-events" className="text-white hover:text-gray-300 transition-colors">
+              <Link to="/my-events" className="text-white hover:text-purple-100 transition-colors">
                 My Events
               </Link>
-              <Link to="/dashboard" className="text-white hover:text-gray-300 transition-colors">
+              <Link to="/dashboard" className="text-white hover:text-purple-100 transition-colors">
                 Dashboard
               </Link>
             </div>
@@ -129,37 +129,37 @@ const CreateEvent = () => {
         {/* Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
-            <SparklesIcon className="w-8 h-8 text-yellow-400 mr-3" />
-            <h1 className="text-4xl font-bold text-white">🎉 Create New Event</h1>
-            <SparklesIcon className="w-8 h-8 text-yellow-400 ml-3" />
+            <SparklesIcon className="w-8 h-8 text-purple-600 mr-3" />
+            <h1 className="text-4xl font-bold text-gray-900">🎉 Create New Event</h1>
+            <SparklesIcon className="w-8 h-8 text-purple-600 ml-3" />
           </div>
-          <p className="text-xl text-gray-300">Plan an amazing event for your club members</p>
+          <p className="text-xl text-gray-700">Plan an amazing event for your club members</p>
         </div>
 
         {error && (
-          <div className="bg-red-500/20 border border-red-400/50 rounded-lg p-4 mb-6 text-red-200 text-center">
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 text-red-800 text-center">
             {error}
           </div>
         )}
 
         {clubs.length === 0 ? (
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 text-center">
-            <InformationCircleIcon className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-4">No Clubs Found</h3>
-            <p className="text-gray-300 mb-6">You need to create a club before you can create events.</p>
+          <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg text-center">
+            <InformationCircleIcon className="w-16 h-16 text-purple-600 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">No Clubs Found</h3>
+            <p className="text-gray-700 mb-6">You need to create a club before you can create events.</p>
             <Link
               to="/create-club"
-              className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-xl font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+              className="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
             >
               Create a Club First
             </Link>
           </div>
         ) : (
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+          <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Club Selection */}
               <div>
-                <label className="block text-white text-sm font-semibold mb-2">
+                <label className="block text-gray-900 text-sm font-semibold mb-2">
                   🏛️ Select Club
                 </label>
                 <select
@@ -167,11 +167,11 @@ const CreateEvent = () => {
                   value={formData.clubId}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 >
-                  <option value="" className="bg-gray-800">Select a club...</option>
+                  <option value="" className="bg-white">Select a club...</option>
                   {clubs.map((club) => (
-                    <option key={club._id} value={club._id} className="bg-gray-800">
+                    <option key={club._id} value={club._id} className="bg-white">
                       {club.name}
                     </option>
                   ))}
@@ -180,7 +180,7 @@ const CreateEvent = () => {
 
               {/* Event Name */}
               <div>
-                <label className="block text-white text-sm font-semibold mb-2">
+                <label className="block text-gray-900 text-sm font-semibold mb-2">
                   ✨ Event Name
                 </label>
                 <input
@@ -190,13 +190,13 @@ const CreateEvent = () => {
                   onChange={handleChange}
                   required
                   placeholder="Amazing Club Event"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />
               </div>
 
               {/* Description */}
               <div>
-                <label className="block text-white text-sm font-semibold mb-2">
+                <label className="block text-gray-900 text-sm font-semibold mb-2">
                   📝 Description
                 </label>
                 <textarea
@@ -206,13 +206,13 @@ const CreateEvent = () => {
                   required
                   rows="4"
                   placeholder="Describe what makes this event special..."
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />
               </div>
 
               {/* Date and Time */}
               <div>
-                <label className="block text-white text-sm font-semibold mb-2">
+                <label className="block text-gray-900 text-sm font-semibold mb-2">
                   📅 Date & Time
                 </label>
                 <input
@@ -222,9 +222,9 @@ const CreateEvent = () => {
                   onChange={handleChange}
                   min={minDate}
                   required
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />
-                <p className="mt-2 text-sm text-yellow-300 flex items-center">
+                <p className="mt-2 text-sm text-purple-600 flex items-center">
                   <InformationCircleIcon className="w-4 h-4 mr-1" />
                   Event must be scheduled for a future date and time
                 </p>
@@ -232,7 +232,7 @@ const CreateEvent = () => {
 
               {/* Location */}
               <div>
-                <label className="block text-white text-sm font-semibold mb-2">
+                <label className="block text-gray-900 text-sm font-semibold mb-2">
                   📍 Location
                 </label>
                 <input
@@ -242,13 +242,13 @@ const CreateEvent = () => {
                   onChange={handleChange}
                   required
                   placeholder="Main Auditorium, Building A"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />
               </div>
 
               {/* Max Attendees */}
               <div>
-                <label className="block text-white text-sm font-semibold mb-2">
+                <label className="block text-gray-900 text-sm font-semibold mb-2">
                   👥 Maximum Attendees (Optional)
                 </label>
                 <input
@@ -258,13 +258,13 @@ const CreateEvent = () => {
                   onChange={handleChange}
                   min="1"
                   placeholder="100"
-                  className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                  className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 />
               </div>
 
               {/* Payment Options */}
-              <div className="border border-white/20 rounded-xl p-6 bg-white/5">
-                <h3 className="text-white text-lg font-semibold mb-4">💰 Payment Settings</h3>
+              <div className="border border-gray-300 rounded-xl p-6 bg-gray-50">
+                <h3 className="text-gray-900 text-lg font-semibold mb-4">💰 Payment Settings</h3>
                 
                 {/* Free/Paid Toggle */}
                 <div className="mb-4">
@@ -279,11 +279,11 @@ const CreateEvent = () => {
                         price: e.target.checked ? formData.price : '',
                         currency: e.target.checked ? formData.currency : 'BDT'
                       })}
-                      className="w-5 h-5 text-purple-600 bg-white/10 border-white/20 rounded focus:ring-purple-500 focus:ring-2"
+                      className="w-5 h-5 text-purple-600 bg-white border-gray-300 rounded focus:ring-purple-500 focus:ring-2"
                     />
-                    <span className="text-white font-medium">This is a paid event</span>
+                    <span className="text-gray-900 font-medium">This is a paid event</span>
                   </label>
-                  <p className="text-gray-300 text-sm mt-1">
+                  <p className="text-gray-700 text-sm mt-1">
                     {formData.isPaid ? 'Attendees will need to pay to register' : 'Event is free to attend'}
                   </p>
                 </div>
@@ -292,7 +292,7 @@ const CreateEvent = () => {
                 {formData.isPaid && (
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-white text-sm font-semibold mb-2">
+                      <label className="block text-gray-900 text-sm font-semibold mb-2">
                         💵 Price
                       </label>
                       <input
@@ -304,11 +304,11 @@ const CreateEvent = () => {
                         step="0.01"
                         required={formData.isPaid}
                         placeholder="25.00"
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                       />
                     </div>
                     <div>
-                      <label className="block text-white text-sm font-semibold mb-2">
+                      <label className="block text-gray-900 text-sm font-semibold mb-2">
                         🌍 Currency
                       </label>
                       <select
@@ -316,16 +316,16 @@ const CreateEvent = () => {
                         value={formData.currency}
                         onChange={handleChange}
                         required={formData.isPaid}
-                        className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                        className="w-full px-4 py-3 bg-white border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                       >
-                        <option value="BDT" className="bg-gray-800">BDT (৳) - Bangladeshi Taka</option>
-                        <option value="USD" className="bg-gray-800">USD ($)</option>
-                        <option value="EUR" className="bg-gray-800">EUR (€)</option>
-                        <option value="GBP" className="bg-gray-800">GBP (£)</option>
-                        <option value="INR" className="bg-gray-800">INR (₹)</option>
-                        <option value="PKR" className="bg-gray-800">PKR (Rs)</option>
-                        <option value="CAD" className="bg-gray-800">CAD (C$)</option>
-                        <option value="AUD" className="bg-gray-800">AUD (A$)</option>
+                        <option value="BDT" className="bg-white">BDT (৳) - Bangladeshi Taka</option>
+                        <option value="USD" className="bg-white">USD ($)</option>
+                        <option value="EUR" className="bg-white">EUR (€)</option>
+                        <option value="GBP" className="bg-white">GBP (£)</option>
+                        <option value="INR" className="bg-white">INR (₹)</option>
+                        <option value="PKR" className="bg-white">PKR (Rs)</option>
+                        <option value="CAD" className="bg-white">CAD (C$)</option>
+                        <option value="AUD" className="bg-white">AUD (A$)</option>
                       </select>
                     </div>
                   </div>
@@ -336,14 +336,14 @@ const CreateEvent = () => {
               <div className="flex gap-4 pt-4">
                 <Link
                   to="/my-events"
-                  className="flex-1 bg-gray-500/20 hover:bg-gray-500/30 text-gray-200 py-3 px-6 rounded-xl font-semibold transition-all duration-300 text-center"
+                  className="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-900 py-3 px-6 rounded-xl font-semibold transition-all duration-300 text-center"
                 >
                   Cancel
                 </Link>
                 <button
                   type="submit"
                   disabled={loading}
-                  className="flex-1 bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white py-3 px-6 rounded-xl font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-xl font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? 'Creating...' : '🎉 Create Event'}
                 </button>

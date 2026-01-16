@@ -98,20 +98,20 @@ const EditEvent = () => {
 
   if (fetchLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-800 flex items-center justify-center">
-        <div className="text-white text-xl">Loading event...</div>
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
+        <div className="text-gray-900 text-xl">Loading event...</div>
       </div>
     );
   }
 
   if (error && !originalEvent) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-800 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
         <div className="text-center">
-          <div className="text-white text-xl mb-4">{error}</div>
+          <div className="text-gray-900 text-xl mb-4">{error}</div>
           <Link
             to="/my-events"
-            className="inline-flex items-center px-6 py-3 bg-white/10 text-white rounded-xl hover:bg-white/20 transition-colors"
+            className="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl transition-colors"
           >
             <ArrowLeftIcon className="w-5 h-5 mr-2" />
             Back to Events

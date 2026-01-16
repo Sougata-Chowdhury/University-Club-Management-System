@@ -114,7 +114,7 @@ const BrowseEvents = () => {
   const getStatusBadge = (status, timeUntil) => {
     if (status === 'completed') {
       return (
-        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-500/20 border border-gray-400/30 text-gray-300">
+        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gray-100 border border-gray-300 text-gray-700">
           <CheckCircleIcon className="w-4 h-4 mr-1" />
           Completed
         </span>
@@ -122,7 +122,7 @@ const BrowseEvents = () => {
     }
     
     return (
-      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-400/30 text-purple-200 animate-pulse">
+      <span className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-purple-50 border border-purple-200 text-purple-900 animate-pulse">
         <SparklesIcon className="w-4 h-4 mr-1" />
         {timeUntil}
       </span>
@@ -131,27 +131,27 @@ const BrowseEvents = () => {
 
   const getEventCardStyle = (status) => {
     if (status === 'completed') {
-      return "bg-white/5 backdrop-blur-lg rounded-3xl p-6 border border-white/10 opacity-75 hover:opacity-90 transition-all duration-300";
+      return "bg-white border border-gray-200 shadow-lg rounded-3xl p-6 opacity-75 hover:opacity-90 transition-all duration-300";
     }
     
-    return "bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-lg rounded-3xl p-6 border border-white/20 hover:border-purple-400/50 transform hover:scale-105 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20";
+    return "bg-white border border-gray-200 shadow-lg rounded-3xl p-6 hover:border-purple-300 transform hover:scale-105 transition-all duration-300 hover:shadow-xl";
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-white mx-auto mb-4"></div>
-          <p className="text-white text-xl">Loading events...</p>
+          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-purple-600 mx-auto mb-4"></div>
+          <p className="text-gray-900 text-xl">Loading events...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       {/* Navigation */}
-      <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20">
+      <nav className="bg-purple-600 border-b border-purple-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/dashboard" className="text-white text-xl font-bold flex items-center">
@@ -176,10 +176,10 @@ const BrowseEvents = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-white mb-4 bg-gradient-to-r from-purple-300 to-pink-300 bg-clip-text text-transparent">
+          <h1 className="text-5xl font-bold text-gray-900 mb-4">
             Discover Amazing Events
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-700 max-w-3xl mx-auto">
             Join exciting events happening across campus. From workshops to social gatherings, 
             find your next adventure here.
           </p>
@@ -187,7 +187,7 @@ const BrowseEvents = () => {
 
         {/* Filter Buttons */}
         <div className="flex justify-center mb-8">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-2 border border-white/20">
+          <div className="bg-purple-50 rounded-2xl p-2 border border-gray-200 shadow-lg">
             <div className="flex space-x-2">
               {[
                 { key: 'all', label: 'All Events', icon: CalendarIcon },
@@ -199,8 +199,8 @@ const BrowseEvents = () => {
                   onClick={() => setFilter(key)}
                   className={`flex items-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                     filter === key
-                      ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg'
-                      : 'text-gray-300 hover:text-white hover:bg-white/10'
+                      ? 'bg-purple-600 text-white shadow-lg'
+                      : 'bg-white text-gray-700 hover:bg-gray-50'
                   }`}
                 >
                   <Icon className="w-5 h-5 mr-2" />
@@ -213,8 +213,8 @@ const BrowseEvents = () => {
 
         {/* Error Message */}
         {error && (
-          <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 mb-6">
-            <p className="text-red-200">{error}</p>
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <p className="text-red-800">{error}</p>
           </div>
         )}
 
@@ -222,8 +222,8 @@ const BrowseEvents = () => {
         {filteredEvents.length === 0 ? (
           <div className="text-center py-16">
             <CalendarIcon className="w-20 h-20 text-gray-400 mx-auto mb-6" />
-            <h3 className="text-2xl font-semibold text-white mb-2">No Events Found</h3>
-            <p className="text-gray-300">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-2">No Events Found</h3>
+            <p className="text-gray-700">
               {filter === 'all' 
                 ? 'No events are currently available.' 
                 : `No ${filter} events found.`}
@@ -237,26 +237,26 @@ const BrowseEvents = () => {
                 <div className="flex justify-between items-start mb-4">
                   {getStatusBadge(event.status, event.timeUntil)}
                   <div className="text-right">
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm text-gray-600">
                       {event.clubId?.name || 'Unknown Club'}
                     </p>
                   </div>
                 </div>
 
                 {/* Event Title */}
-                <h3 className="text-xl font-bold text-white mb-3 line-clamp-2">
+                <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2">
                   {event.name}
                 </h3>
 
                 {/* Event Description */}
-                <p className="text-gray-300 mb-4 line-clamp-3">
+                <p className="text-gray-700 mb-4 line-clamp-3">
                   {event.description}
                 </p>
 
                 {/* Event Details */}
                 <div className="space-y-3 mb-6">
-                  <div className="flex items-center text-gray-300">
-                    <CalendarIcon className="w-5 h-5 mr-3 text-purple-400" />
+                  <div className="flex items-center text-gray-700">
+                    <CalendarIcon className="w-5 h-5 mr-3 text-purple-600" />
                     <span>{new Date(event.date).toLocaleDateString('en-US', {
                       weekday: 'long',
                       year: 'numeric',
@@ -265,8 +265,8 @@ const BrowseEvents = () => {
                     })}</span>
                   </div>
                   
-                  <div className="flex items-center text-gray-300">
-                    <ClockIcon className="w-5 h-5 mr-3 text-purple-400" />
+                  <div className="flex items-center text-gray-700">
+                    <ClockIcon className="w-5 h-5 mr-3 text-purple-600" />
                     <span>{new Date(event.date).toLocaleTimeString('en-US', {
                       hour: '2-digit',
                       minute: '2-digit'
@@ -274,15 +274,15 @@ const BrowseEvents = () => {
                   </div>
 
                   {event.location && (
-                    <div className="flex items-center text-gray-300">
-                      <MapPinIcon className="w-5 h-5 mr-3 text-purple-400" />
+                    <div className="flex items-center text-gray-700">
+                      <MapPinIcon className="w-5 h-5 mr-3 text-purple-600" />
                       <span className="line-clamp-1">{event.location}</span>
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between text-gray-300">
+                  <div className="flex items-center justify-between text-gray-700">
                     <div className="flex items-center">
-                      <UserGroupIcon className="w-5 h-5 mr-3 text-purple-400" />
+                      <UserGroupIcon className="w-5 h-5 mr-3 text-purple-600" />
                       <span>{event.attendees?.length || 0} attending</span>
                     </div>
                     {event.maxAttendees > 0 && (
@@ -307,7 +307,7 @@ const BrowseEvents = () => {
                         <button
                           onClick={() => handleEventRegistration(event._id, 'leave')}
                           disabled={registering[event._id]}
-                          className="w-full inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium transition-all duration-300 bg-gradient-to-r from-red-500 to-red-600 text-white hover:from-red-600 hover:to-red-700 transform hover:scale-105 shadow-lg hover:shadow-red-500/25 disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="w-full inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium transition-all duration-300 bg-red-600 text-white hover:bg-red-700 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           {registering[event._id] ? (
                             <>
@@ -327,8 +327,8 @@ const BrowseEvents = () => {
                           disabled={registering[event._id] || isEventFull(event)}
                           className={`w-full inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                             isEventFull(event)
-                              ? 'bg-gray-600/50 text-gray-300 cursor-not-allowed'
-                              : 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 transform hover:scale-105 shadow-lg hover:shadow-green-500/25'
+                              ? 'bg-gray-400 text-gray-700 cursor-not-allowed'
+                              : 'bg-purple-600 text-white hover:bg-purple-700 transform hover:scale-105 shadow-lg'
                           } disabled:opacity-50 disabled:cursor-not-allowed`}
                         >
                           {registering[event._id] ? (
@@ -354,7 +354,7 @@ const BrowseEvents = () => {
 
                   {/* Past Event Message */}
                   {event.status === 'completed' && (
-                    <div className="w-full px-6 py-3 rounded-xl bg-gray-600/30 border border-gray-500/50 text-gray-300 text-center">
+                    <div className="w-full px-6 py-3 rounded-xl bg-gray-100 border border-gray-300 text-gray-700 text-center">
                       <CheckCircleIcon className="w-5 h-5 inline mr-2" />
                       Event Has Ended
                     </div>
@@ -365,8 +365,8 @@ const BrowseEvents = () => {
                     to={`/events/${event._id}`}
                     className={`w-full inline-flex items-center justify-center px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
                       event.status === 'completed'
-                        ? 'bg-gray-600/50 text-gray-300'
-                        : 'bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:border-purple-400/50'
+                        ? 'bg-gray-100 border border-gray-300 text-gray-700'
+                        : 'bg-white border border-gray-300 text-gray-900 hover:bg-gray-50 hover:border-purple-300'
                     }`}
                   >
                     View Details
