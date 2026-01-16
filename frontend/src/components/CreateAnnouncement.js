@@ -138,11 +138,11 @@ const CreateAnnouncement = () => {
 
   if (userClubs.length === 0) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-700 to-indigo-800">
-        <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
+        <nav className="bg-purple-600 border-b border-purple-700">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
-              <Link to="/announcements" className="text-white hover:text-gray-300 transition-colors flex items-center">
+              <Link to="/announcements" className="text-white hover:text-purple-100 transition-colors flex items-center">
                 <ArrowLeftIcon className="w-5 h-5 mr-2" />
                 Back to Announcements
               </Link>
@@ -152,23 +152,23 @@ const CreateAnnouncement = () => {
         </nav>
         
         <div className="max-w-2xl mx-auto px-4 py-12">
-          <div className="text-center bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
-            <ExclamationTriangleIcon className="w-16 h-16 text-yellow-400 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-white mb-4">No Approved Clubs Found</h3>
-            <p className="text-gray-300 mb-6">
+          <div className="text-center bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
+            <ExclamationTriangleIcon className="w-16 h-16 text-yellow-600 mx-auto mb-4" />
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">No Approved Clubs Found</h3>
+            <p className="text-gray-700 mb-6">
               You need to have at least one approved club to create announcements. 
               Only approved club creators and members can make announcements.
             </p>
             <div className="space-y-3">
               <Link
                 to="/create-club"
-                className="block bg-gradient-to-r from-purple-500 to-blue-500 text-white py-3 px-6 rounded-lg font-semibold transform transition-all duration-300 hover:scale-105"
+                className="block bg-purple-600 hover:bg-purple-700 text-white py-3 px-6 rounded-lg font-semibold transform transition-all duration-300 hover:scale-105"
               >
                 Create a Club
               </Link>
               <Link
                 to="/my-clubs"
-                className="block bg-white/10 border border-white/20 text-white py-3 px-6 rounded-lg hover:bg-white/20 transition-colors"
+                className="block bg-gray-100 hover:bg-gray-200 border border-gray-300 text-gray-700 py-3 px-6 rounded-lg transition-colors"
               >
                 View My Clubs
               </Link>
@@ -180,12 +180,12 @@ const CreateAnnouncement = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-600 via-pink-700 to-indigo-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       {/* Navigation */}
-      <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20">
+      <nav className="bg-purple-600 border-b border-purple-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link to="/announcements" className="text-white hover:text-gray-300 transition-colors flex items-center">
+            <Link to="/announcements" className="text-white hover:text-purple-100 transition-colors flex items-center">
               <ArrowLeftIcon className="w-5 h-5 mr-2" />
               Back to Announcements
             </Link>
@@ -201,19 +201,19 @@ const CreateAnnouncement = () => {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-4 flex items-center justify-center">
-            <SpeakerWaveIcon className="w-10 h-10 mr-3 text-pink-400" />
+          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+            <SpeakerWaveIcon className="w-10 h-10 mr-3 text-purple-600" />
             📢 Create Announcement
           </h1>
-          <p className="text-xl text-gray-300">Share important updates with your club members</p>
+          <p className="text-xl text-gray-700">Share important updates with your club members</p>
         </div>
 
         {/* Form */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20">
+        <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg">
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Club Selection */}
             <div>
-              <label className="block text-white text-sm font-semibold mb-2">
+              <label className="block text-gray-900 text-sm font-semibold mb-2">
                 Select Club *
               </label>
               <select
@@ -221,11 +221,11 @@ const CreateAnnouncement = () => {
                 value={formData.clubId}
                 onChange={handleInputChange}
                 required
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all"
               >
-                <option value="" className="bg-gray-800">Select a club</option>
+                <option value="" className="bg-white">Select a club</option>
                 {userClubs.map(club => (
-                  <option key={club._id} value={club._id} className="bg-gray-800">
+                  <option key={club._id} value={club._id} className="bg-white">
                     {club.name}
                   </option>
                 ))}
@@ -235,15 +235,15 @@ const CreateAnnouncement = () => {
             {/* Message */}
             <div>
               <div className="flex justify-between items-center mb-2">
-                <label className="block text-white text-sm font-semibold">
+                <label className="block text-gray-900 text-sm font-semibold">
                   Message *
                 </label>
                 <span className={`text-sm ${
                   characterCount > maxCharacters * 0.9 
-                    ? 'text-red-400' 
+                    ? 'text-red-600' 
                     : characterCount > maxCharacters * 0.7 
-                    ? 'text-yellow-400' 
-                    : 'text-gray-400'
+                    ? 'text-yellow-600' 
+                    : 'text-gray-600'
                 }`}>
                   {characterCount}/{maxCharacters}
                 </span>
@@ -255,16 +255,16 @@ const CreateAnnouncement = () => {
                 placeholder="What would you like to announce to your club members?"
                 required
                 rows={6}
-                className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent transition-all resize-none"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition-all resize-none"
               />
-              <p className="text-gray-400 text-sm mt-2">
+              <p className="text-gray-600 text-sm mt-2">
                 💡 Tip: Be clear and engaging. Include any important dates, locations, or action items.
               </p>
             </div>
 
             {/* Image Upload */}
             <div>
-              <label className="block text-white text-sm font-semibold mb-2">
+              <label className="block text-gray-900 text-sm font-semibold mb-2">
                 Add Image (Optional)
               </label>
               {!imagePreview ? (
