@@ -244,19 +244,19 @@ const PaymentHistoryCard = ({ payment, formatCurrency, formatDate }) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-        <div>
-          <p className="text-sm text-gray-600 font-medium mb-1">Payment Method</p>
-          <p className="text-gray-900 font-medium">
+        <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+          <p className="text-xs text-gray-500 font-semibold uppercase tracking-wide mb-1">Payment Method</p>
+          <p className="text-gray-900 font-semibold text-base">
             {payment.paymentMethod.charAt(0).toUpperCase() + payment.paymentMethod.slice(1).replace('_', ' ')}
           </p>
         </div>
-        <div>
-          <p className="text-sm text-gray-600 font-medium mb-1">Transaction ID</p>
-          <p className="text-gray-900 font-mono text-sm">{payment.transactionId || 'N/A'}</p>
+        <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+          <p className="text-xs text-gray-500 font-semibold uppercase tracking-wide mb-1">Transaction ID</p>
+          <p className="text-gray-900 font-mono text-sm font-medium">{payment.transactionId || 'N/A'}</p>
         </div>
-        <div>
-          <p className="text-sm text-gray-600 font-medium mb-1">Approved By</p>
-          <p className="text-gray-900 text-sm">
+        <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+          <p className="text-xs text-gray-500 font-semibold uppercase tracking-wide mb-1">Approved By</p>
+          <p className="text-gray-900 text-sm font-semibold">
             {payment.approvedBy && payment.approvedBy.firstName && payment.approvedBy.lastName ? 
               `${payment.approvedBy.firstName} ${payment.approvedBy.lastName}` : 
               payment.approvedBy && (payment.approvedBy.firstName || payment.approvedBy.lastName) ?
@@ -268,28 +268,28 @@ const PaymentHistoryCard = ({ payment, formatCurrency, formatDate }) => {
       </div>
 
       {payment.eventId?.date && (
-        <div className="mb-4">
-          <p className="text-sm text-gray-600 font-medium mb-1">Event Date</p>
-          <p className="text-gray-900">{formatDate(payment.eventId.date)}</p>
+        <div className="mb-4 bg-purple-50 rounded-lg p-3 border border-purple-200">
+          <p className="text-xs text-purple-700 font-semibold uppercase tracking-wide mb-1">Event Date</p>
+          <p className="text-gray-900 font-semibold">{formatDate(payment.eventId.date)}</p>
         </div>
       )}
 
       {payment.eventId?.location && (
-        <div className="mb-4">
-          <p className="text-sm text-gray-600 font-medium mb-1">Event Location</p>
-          <p className="text-gray-900">{payment.eventId.location}</p>
+        <div className="mb-4 bg-purple-50 rounded-lg p-3 border border-purple-200">
+          <p className="text-xs text-purple-700 font-semibold uppercase tracking-wide mb-1">Event Location</p>
+          <p className="text-gray-900 font-semibold">{payment.eventId.location}</p>
         </div>
       )}
 
       {payment.proofOfPayment && (
-        <div className="flex items-center space-x-2 text-sm text-blue-700 mb-4">
-          <DocumentIcon className="w-4 h-4" />
-          <span>Payment proof available</span>
+        <div className="flex items-center space-x-3 text-sm bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
+          <DocumentIcon className="w-5 h-5 text-blue-600" />
+          <span className="text-gray-900 font-medium">Payment proof available</span>
           <a 
             href={`${process.env.REACT_APP_BACKEND_URL}${payment.proofOfPayment}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-700 underline font-medium flex items-center space-x-1"
+            className="text-blue-600 hover:text-blue-800 underline font-bold flex items-center space-x-1"
           >
             <EyeIcon className="w-4 h-4" />
             <span>View</span>
@@ -298,9 +298,9 @@ const PaymentHistoryCard = ({ payment, formatCurrency, formatDate }) => {
       )}
 
       {payment.notes && (
-        <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-          <p className="text-sm text-gray-600 font-medium mb-1">Notes</p>
-          <p className="text-gray-900">{payment.notes}</p>
+        <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
+          <p className="text-xs text-amber-700 font-semibold uppercase tracking-wide mb-2">Notes</p>
+          <p className="text-gray-900 font-medium">{payment.notes}</p>
         </div>
       )}
     </div>

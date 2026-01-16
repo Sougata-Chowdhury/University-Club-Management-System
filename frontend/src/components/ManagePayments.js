@@ -478,27 +478,27 @@ const PaymentCard = ({
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-        <div>
-          <p className="text-sm text-gray-600 font-medium mb-1">Payment Method</p>
-          <p className="text-gray-900 font-medium">
+        <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+          <p className="text-xs text-gray-500 font-semibold uppercase tracking-wide mb-1">Payment Method</p>
+          <p className="text-gray-900 font-semibold text-base">
             {payment.paymentMethod.charAt(0).toUpperCase() + payment.paymentMethod.slice(1).replace('_', ' ')}
           </p>
         </div>
-        <div>
-          <p className="text-sm text-gray-600 font-medium mb-1">Transaction ID</p>
-          <p className="text-gray-900 font-mono text-sm">{payment.transactionId || 'N/A'}</p>
+        <div className="bg-gray-50 rounded-lg p-3 border border-gray-200">
+          <p className="text-xs text-gray-500 font-semibold uppercase tracking-wide mb-1">Transaction ID</p>
+          <p className="text-gray-900 font-mono text-sm font-medium">{payment.transactionId || 'N/A'}</p>
         </div>
       </div>
 
       {payment.proofOfPayment && (
-        <div className="flex items-center space-x-2 text-sm text-blue-700 mb-4">
-          <DocumentIcon className="w-4 h-4" />
-          <span>Payment proof available</span>
+        <div className="flex items-center space-x-3 text-sm bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
+          <DocumentIcon className="w-5 h-5 text-blue-600" />
+          <span className="text-gray-900 font-medium">Payment proof available</span>
           <a 
             href={`${process.env.REACT_APP_BACKEND_URL}/uploads/payments/${payment.proofOfPayment}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-700 underline font-medium"
+            className="text-blue-600 hover:text-blue-800 underline font-bold"
           >
             View
           </a>
@@ -506,9 +506,9 @@ const PaymentCard = ({
       )}
 
       {payment.notes && (
-        <div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
-          <p className="text-sm text-gray-600 font-medium mb-1">Notes</p>
-          <p className="text-gray-900">{payment.notes}</p>
+        <div className="mb-4 p-4 bg-amber-50 rounded-lg border border-amber-200">
+          <p className="text-xs text-amber-700 font-semibold uppercase tracking-wide mb-2">Notes</p>
+          <p className="text-gray-900 font-medium">{payment.notes}</p>
         </div>
       )}
 
@@ -532,8 +532,8 @@ const PaymentCard = ({
       )}
 
       {payment.status === 'approved' && payment.paidAt && (
-        <div className="text-sm text-green-700 font-medium">
-          Payment approved on: {formatDate(payment.paidAt)}
+        <div className="text-sm bg-green-50 border border-green-200 rounded-lg p-3">
+          <span className="text-green-700 font-bold">Payment approved on: {formatDate(payment.paidAt)}</span>
         </div>
       )}
     </div>
