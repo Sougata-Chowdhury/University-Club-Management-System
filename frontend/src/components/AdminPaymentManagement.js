@@ -70,9 +70,9 @@ const AdminPaymentManagement = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       {/* Navigation */}
-      <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20">
+      <nav className="bg-purple-600 border-b border-purple-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
@@ -83,7 +83,7 @@ const AdminPaymentManagement = () => {
                 <ArrowLeftIcon className="w-5 h-5 mr-2" />
                 Back to Dashboard
               </button>
-              <div className="h-6 w-px bg-white/20"></div>
+              <div className="h-6 w-px bg-gray-300"></div>
               <h1 className="text-white text-xl font-bold">Payment Management</h1>
             </div>
             <div className="flex items-center space-x-4">
@@ -130,87 +130,87 @@ const AdminPaymentManagement = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-4">Payment Management</h1>
-          <p className="text-xl text-gray-300">Review and process payment requests</p>
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Payment Management</h1>
+          <p className="text-xl text-gray-700">Review and process payment requests</p>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-300 text-sm">Pending Payments</p>
-                <p className="text-3xl font-bold text-yellow-300">{pendingPayments.length}</p>
+                <p className="text-gray-600 text-sm">Pending Payments</p>
+                <p className="text-3xl font-bold text-yellow-600">{pendingPayments.length}</p>
               </div>
-              <ClockIcon className="w-8 h-8 text-yellow-400" />
+              <ClockIcon className="w-8 h-8 text-yellow-600" />
             </div>
           </div>
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-300 text-sm">Total Amount</p>
-                <p className="text-3xl font-bold text-green-300">
+                <p className="text-gray-600 text-sm">Total Amount</p>
+                <p className="text-3xl font-bold text-green-600">
                   {formatCurrency(Array.isArray(pendingPayments) ? pendingPayments.reduce((sum, payment) => sum + payment.amount, 0) : 0)}
                 </p>
               </div>
-              <CurrencyDollarIcon className="w-8 h-8 text-green-400" />
+              <CurrencyDollarIcon className="w-8 h-8 text-green-600" />
             </div>
           </div>
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 mb-6">
-            <p className="text-red-200">{error}</p>
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <p className="text-red-800">{error}</p>
           </div>
         )}
 
         {/* Pending Payments */}
         {loading ? (
           <div className="text-center py-12">
-            <div className="text-white text-xl">Loading pending payments...</div>
+            <div className="text-gray-900 text-xl">Loading pending payments...</div>
           </div>
         ) : !Array.isArray(pendingPayments) || pendingPayments.length === 0 ? (
           <div className="text-center py-12">
             <CheckCircleIcon className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-2">No pending payments</h3>
-            <p className="text-gray-300">All payments have been processed</p>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">No pending payments</h3>
+            <p className="text-gray-600">All payments have been processed</p>
           </div>
         ) : (
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 overflow-hidden">
+          <div className="bg-white rounded-2xl border border-gray-200 shadow-lg overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-white/5">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                       Payment Details
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                       User
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                       Amount
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                       Date
                     </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-300 uppercase tracking-wider">
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase tracking-wider">
                       Actions
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/10">
+                <tbody className="divide-y divide-gray-200">
                   {pendingPayments.map((payment) => (
-                    <tr key={payment._id} className="hover:bg-white/5">
+                    <tr key={payment._id} className="hover:bg-gray-50">
                       <td className="px-6 py-4">
                         <div>
-                          <div className="text-sm font-medium text-white">
+                          <div className="text-sm font-medium text-gray-900">
                             {payment.eventId?.title || 'Event Payment'}
                           </div>
-                          <div className="text-sm text-gray-300">
+                          <div className="text-sm text-gray-600">
                             {payment.clubId?.name || 'Club Payment'}
                           </div>
-                          <div className="text-xs text-gray-400 mt-1">
+                          <div className="text-xs text-gray-500 mt-1">
                             Payment ID: {payment._id.slice(-8)}
                           </div>
                         </div>
@@ -218,33 +218,33 @@ const AdminPaymentManagement = () => {
                       <td className="px-6 py-4">
                         <div className="flex items-center">
                           <div className="flex-shrink-0 h-8 w-8">
-                            <div className="h-8 w-8 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center">
+                            <div className="h-8 w-8 rounded-full bg-purple-600 flex items-center justify-center">
                               <span className="text-white text-xs font-bold">
                                 {payment.userId?.firstName?.charAt(0) || 'U'}
                               </span>
                             </div>
                           </div>
                           <div className="ml-3">
-                            <div className="text-sm font-medium text-white">
+                            <div className="text-sm font-medium text-gray-900">
                               {payment.userId?.firstName} {payment.userId?.lastName}
                             </div>
-                            <div className="text-sm text-gray-300">
+                            <div className="text-sm text-gray-600">
                               {payment.userId?.email}
                             </div>
                           </div>
                         </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="text-sm font-medium text-green-300">
+                        <div className="text-sm font-medium text-green-600">
                           {formatCurrency(payment.amount)}
                         </div>
-                        <div className="text-xs text-gray-400">
+                        <div className="text-xs text-gray-500">
                           {payment.paymentMethod || 'Card'}
                         </div>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
                         {new Date(payment.createdAt).toLocaleDateString()}
-                        <div className="text-xs text-gray-400">
+                        <div className="text-xs text-gray-500">
                           {new Date(payment.createdAt).toLocaleTimeString()}
                         </div>
                       </td>
@@ -253,7 +253,7 @@ const AdminPaymentManagement = () => {
                           <button
                             onClick={() => handlePaymentAction(payment._id, 'approve')}
                             disabled={actionLoading === payment._id}
-                            className="flex items-center px-3 py-1 bg-green-500/20 border border-green-400/50 text-green-200 rounded-lg hover:bg-green-500/30 transition-colors disabled:opacity-50"
+                            className="flex items-center px-3 py-1 bg-green-600 border border-green-700 text-white rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50"
                           >
                             <CheckCircleIcon className="w-4 h-4 mr-1" />
                             {actionLoading === payment._id ? 'Processing...' : 'Approve'}
@@ -261,7 +261,7 @@ const AdminPaymentManagement = () => {
                           <button
                             onClick={() => handlePaymentAction(payment._id, 'reject')}
                             disabled={actionLoading === payment._id}
-                            className="flex items-center px-3 py-1 bg-red-500/20 border border-red-400/50 text-red-200 rounded-lg hover:bg-red-500/30 transition-colors disabled:opacity-50"
+                            className="flex items-center px-3 py-1 bg-red-600 border border-red-700 text-white rounded-lg hover:bg-red-700 transition-colors disabled:opacity-50"
                           >
                             <XCircleIcon className="w-4 h-4 mr-1" />
                             {actionLoading === payment._id ? 'Processing...' : 'Reject'}

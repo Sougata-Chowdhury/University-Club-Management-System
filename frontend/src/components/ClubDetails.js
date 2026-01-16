@@ -118,21 +118,21 @@ const ClubDetails = () => {
     switch (status) {
       case 'approved':
         return (
-          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm bg-green-500/20 border border-green-400/50 text-green-200">
+          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm bg-green-50 border border-green-200 text-green-800">
             <CheckCircleIcon className="w-5 h-5 mr-2" />
             ✅ Approved & Active
           </span>
         );
       case 'pending':
         return (
-          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm bg-yellow-500/20 border border-yellow-400/50 text-yellow-200">
+          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm bg-yellow-50 border border-yellow-200 text-yellow-800">
             <ClockIcon className="w-5 h-5 mr-2" />
             ⏳ Pending Admin Approval
           </span>
         );
       case 'rejected':
         return (
-          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm bg-red-500/20 border border-red-400/50 text-red-200">
+          <span className="inline-flex items-center px-4 py-2 rounded-full text-sm bg-red-50 border border-red-200 text-red-800">
             <ExclamationCircleIcon className="w-5 h-5 mr-2" />
             ❌ Rejected
           </span>
@@ -153,21 +153,21 @@ const ClubDetails = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800 flex items-center justify-center">
-        <div className="text-white text-xl">Loading club details...</div>
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
+        <div className="text-gray-900 text-xl">Loading club details...</div>
       </div>
     );
   }
 
   if (error || !club) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800 flex items-center justify-center">
-        <div className="text-center text-white">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
+        <div className="text-center text-gray-900">
           <h2 className="text-2xl font-bold mb-4">Club Not Found</h2>
-          <p className="mb-6">{error || 'The club you are looking for does not exist.'}</p>
+          <p className="mb-6 text-gray-700">{error || 'The club you are looking for does not exist.'}</p>
           <Link
             to="/browse-clubs"
-            className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-xl font-semibold"
+            className="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-semibold"
           >
             <ArrowLeftIcon className="w-5 h-5 mr-2" />
             Back to Browse Clubs
@@ -178,31 +178,31 @@ const ClubDetails = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       {/* Navigation */}
-      <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20">
+      <nav className="bg-purple-600 border-b border-purple-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/dashboard" className="text-white text-xl font-bold">
               University Clubs
             </Link>
             <div className="flex items-center space-x-4">
-              <Link to="/browse-clubs" className="text-white hover:text-gray-300 transition-colors">
+              <Link to="/browse-clubs" className="text-white hover:text-purple-100 transition-colors">
                 Browse Clubs
               </Link>
-              <Link to="/my-clubs" className="text-white hover:text-gray-300 transition-colors">
+              <Link to="/my-clubs" className="text-white hover:text-purple-100 transition-colors">
                 My Clubs
               </Link>
               <Link 
                 to="/profile" 
-                className="bg-green-500 hover:bg-green-600 text-white px-3 py-2 rounded-lg transition-colors flex items-center space-x-2"
+                className="bg-purple-500 hover:bg-purple-700 text-white px-3 py-2 rounded-lg transition-colors flex items-center space-x-2"
               >
                 <UserIcon className="h-4 w-4" />
                 <span>Profile</span>
               </Link>
               <Link 
                 to="/settings" 
-                className="bg-purple-500 hover:bg-purple-600 text-white px-3 py-2 rounded-lg transition-colors flex items-center space-x-2"
+                className="bg-purple-500 hover:bg-purple-700 text-white px-3 py-2 rounded-lg transition-colors flex items-center space-x-2">
               >
                 <CogIcon className="h-4 w-4" />
                 <span>Settings</span>
@@ -217,7 +217,7 @@ const ClubDetails = () => {
         <div className="mb-6">
           <button
             onClick={() => navigate(-1)}
-            className="inline-flex items-center text-white hover:text-gray-300 transition-colors"
+            className="inline-flex items-center text-gray-700 hover:text-purple-600 transition-colors"
           >
             <ArrowLeftIcon className="w-5 h-5 mr-2" />
             Back
@@ -226,18 +226,18 @@ const ClubDetails = () => {
 
         {/* Error Message */}
         {error && (
-          <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 mb-6">
-            <p className="text-red-200">{error}</p>
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <p className="text-red-800">{error}</p>
           </div>
         )}
 
         {/* Club Header */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 mb-6">
+        <div className="bg-white rounded-2xl p-8 border border-gray-200 shadow-lg mb-6">
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
             <div className="flex-1">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-4">
-                  <h1 className="text-4xl font-bold text-white">🏛️ {club.name}</h1>
+                  <h1 className="text-4xl font-bold text-gray-900">🏛️ {club.name}</h1>
                   {getStatusBadge(club.status)}
                 </div>
                 {currentUser && !isClubCreator && (
@@ -256,7 +256,7 @@ const ClubDetails = () => {
                 )}
               </div>
               
-              <p className="text-gray-300 text-lg leading-relaxed mb-6">
+              <p className="text-gray-700 text-lg leading-relaxed mb-6">
                 {club.description || 'No description available.'}
               </p>
 
@@ -266,7 +266,7 @@ const ClubDetails = () => {
                   {club.status === 'approved' && (
                     <Link
                       to={`/manage-club/${club._id}`}
-                      className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-lg font-semibold hover:scale-105 transition-transform"
+                      className="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold hover:scale-105 transition-transform"
                     >
                       <Cog6ToothIcon className="w-5 h-5 mr-2" />
                       Manage Club
@@ -274,7 +274,7 @@ const ClubDetails = () => {
                   )}
                   <button
                     onClick={() => setShowDeleteModal(true)}
-                    className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg font-semibold hover:scale-105 transition-transform"
+                    className="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-semibold hover:scale-105 transition-transform">
                   >
                     <TrashIcon className="w-5 h-5 mr-2" />
                     Delete Club
@@ -287,7 +287,7 @@ const ClubDetails = () => {
                 <button
                   onClick={handleApplyToJoin}
                   disabled={isApplying}
-                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-green-500 to-blue-500 text-white rounded-xl font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50"
+                  className="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-xl font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50"
                 >
                   {isApplying ? (
                     <div className="flex items-center">
@@ -307,14 +307,14 @@ const ClubDetails = () => {
               {applicationStatus && (
                 <div className="mt-4">
                   {applicationStatus === 'pending' && (
-                    <div className="bg-yellow-500/20 border border-yellow-400/50 rounded-lg p-3">
-                      <p className="text-yellow-200">⏳ Your application is pending approval</p>
+                    <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
+                      <p className="text-yellow-800">⏳ Your application is pending approval</p>
                     </div>
                   )}
                   {applicationStatus === 'approved' && (
                     <div className="space-y-3">
-                      <div className="bg-green-500/20 border border-green-400/50 rounded-lg p-3">
-                        <p className="text-green-200">🎉 You are a member of this club!</p>
+                      <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                        <p className="text-green-800">🎉 You are a member of this club!</p>
                       </div>
                       <div className="flex justify-center">
                         <FeedbackButton
@@ -339,8 +339,8 @@ const ClubDetails = () => {
                     </div>
                   )}
                   {applicationStatus === 'rejected' && (
-                    <div className="bg-red-500/20 border border-red-400/50 rounded-lg p-3">
-                      <p className="text-red-200">❌ Your application was rejected</p>
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                      <p className="text-red-800">❌ Your application was rejected</p>
                     </div>
                   )}
                 </div>
@@ -352,29 +352,29 @@ const ClubDetails = () => {
         {/* Club Information Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           {/* Basic Info */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-            <h3 className="text-xl font-bold text-white mb-4">📋 Club Information</h3>
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">📋 Club Information</h3>
             <div className="space-y-4">
-              <div className="flex items-center text-gray-300">
-                <TagIcon className="w-5 h-5 mr-3 text-purple-400" />
+              <div className="flex items-center text-gray-700">
+                <TagIcon className="w-5 h-5 mr-3 text-purple-600" />
                 <div>
-                  <div className="text-sm text-gray-400">Category</div>
+                  <div className="text-sm text-gray-500">Category</div>
                   <div className="font-semibold">{club.category || 'General'}</div>
                 </div>
               </div>
-              <div className="flex items-center text-gray-300">
-                <UserIcon className="w-5 h-5 mr-3 text-blue-400" />
+              <div className="flex items-center text-gray-700">
+                <UserIcon className="w-5 h-5 mr-3 text-purple-600" />
                 <div>
-                  <div className="text-sm text-gray-400">Club Creator</div>
+                  <div className="text-sm text-gray-500">Club Creator</div>
                   <div className="font-semibold">
                     {club.createdBy?.firstName} {club.createdBy?.lastName}
                   </div>
                 </div>
               </div>
-              <div className="flex items-center text-gray-300">
-                <CalendarIcon className="w-5 h-5 mr-3 text-green-400" />
+              <div className="flex items-center text-gray-700">
+                <CalendarIcon className="w-5 h-5 mr-3 text-purple-600" />
                 <div>
-                  <div className="text-sm text-gray-400">Created Date</div>
+                  <div className="text-sm text-gray-500">Created Date</div>
                   <div className="font-semibold">
                     {new Date(club.createdAt).toLocaleDateString('en-US', {
                       year: 'numeric',
@@ -388,22 +388,22 @@ const ClubDetails = () => {
           </div>
 
           {/* Statistics */}
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-            <h3 className="text-xl font-bold text-white mb-4">📊 Club Statistics</h3>
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">📊 Club Statistics</h3>
             <div className="space-y-4">
-              <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
-                <div className="flex items-center text-gray-300">
-                  <UserGroupIcon className="w-5 h-5 mr-3 text-blue-400" />
+              <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
+                <div className="flex items-center text-gray-700">
+                  <UserGroupIcon className="w-5 h-5 mr-3 text-purple-600" />
                   <span>Total Members</span>
                 </div>
-                <span className="text-2xl font-bold text-white">{club.members?.length || 0}</span>
+                <span className="text-2xl font-bold text-gray-900">{club.members?.length || 0}</span>
               </div>
-              <div className="flex items-center justify-between p-3 bg-white/5 rounded-lg">
-                <div className="flex items-center text-gray-300">
-                  <ClockIcon className="w-5 h-5 mr-3 text-yellow-400" />
+              <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg">
+                <div className="flex items-center text-gray-700">
+                  <ClockIcon className="w-5 h-5 mr-3 text-purple-600" />
                   <span>Pending Applications</span>
                 </div>
-                <span className="text-2xl font-bold text-white">
+                <span className="text-2xl font-bold text-gray-900">
                   {club.memberApplications?.filter(app => app.status === 'pending').length || 0}
                 </span>
               </div>
@@ -413,20 +413,20 @@ const ClubDetails = () => {
 
         {/* Members Section (if approved) */}
         {club.status === 'approved' && club.members && club.members.length > 0 && (
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
-            <h3 className="text-xl font-bold text-white mb-4">👥 Club Members</h3>
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
+            <h3 className="text-xl font-bold text-gray-900 mb-4">👥 Club Members</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {club.members.map((member, index) => (
-                <div key={index} className="bg-white/5 rounded-lg p-3">
+                <div key={index} className="bg-purple-50 rounded-lg p-3">
                   <div className="flex items-center">
-                    <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold mr-3">
+                    <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center text-white font-semibold mr-3">
                       {member.firstName?.[0]}{member.lastName?.[0]}
                     </div>
                     <div>
-                      <div className="text-white font-semibold">
+                      <div className="text-gray-900 font-semibold">
                         {member.firstName} {member.lastName}
                       </div>
-                      <div className="text-gray-400 text-sm">{member.email}</div>
+                      <div className="text-gray-600 text-sm">{member.email}</div>
                     </div>
                   </div>
                 </div>

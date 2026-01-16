@@ -90,9 +90,9 @@ const AdminAnnouncements = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800 flex items-center justify-center">
-        <div className="text-white text-xl flex items-center">
-          <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
+        <div className="text-gray-900 text-xl flex items-center">
+          <div className="w-6 h-6 border-2 border-purple-600 border-t-transparent rounded-full animate-spin mr-3"></div>
           Loading announcements...
         </div>
       </div>
@@ -100,9 +100,9 @@ const AdminAnnouncements = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       {/* Navigation */}
-      <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20">
+      <nav className="bg-purple-600 border-b border-purple-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
@@ -145,30 +145,30 @@ const AdminAnnouncements = () => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-4 flex items-center justify-center">
-            <SpeakerWaveIcon className="w-10 h-10 mr-3 text-orange-400" />
+          <h1 className="text-4xl font-bold text-gray-900 mb-4 flex items-center justify-center">
+            <SpeakerWaveIcon className="w-10 h-10 mr-3 text-purple-600" />
             📢 Announcements Management
           </h1>
-          <p className="text-xl text-gray-300">Monitor and manage all announcements across the platform</p>
+          <p className="text-xl text-gray-700">Monitor and manage all announcements across the platform</p>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-300 text-sm">Total Announcements</p>
-                <p className="text-3xl font-bold text-orange-300">{pagination?.totalItems || 0}</p>
+                <p className="text-gray-600 text-sm">Total Announcements</p>
+                <p className="text-3xl font-bold text-purple-600">{pagination?.totalItems || 0}</p>
               </div>
-              <SpeakerWaveIcon className="w-8 h-8 text-orange-400" />
+              <SpeakerWaveIcon className="w-8 h-8 text-purple-600" />
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-300 text-sm">Active</p>
-                <p className="text-3xl font-bold text-green-300">
+                <p className="text-gray-600 text-sm">Active</p>
+                <p className="text-3xl font-bold text-green-600">
                   {announcements.filter(a => a.isActive !== false).length}
                 </p>
               </div>
@@ -176,11 +176,11 @@ const AdminAnnouncements = () => {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-300 text-sm">Deleted</p>
-                <p className="text-3xl font-bold text-red-300">
+                <p className="text-gray-600 text-sm">Deleted</p>
+                <p className="text-3xl font-bold text-red-600">
                   {announcements.filter(a => a.isActive === false).length}
                 </p>
               </div>
@@ -188,39 +188,39 @@ const AdminAnnouncements = () => {
             </div>
           </div>
 
-          <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+          <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-gray-300 text-sm">Showing</p>
-                <p className="text-3xl font-bold text-purple-300">{announcements.length}</p>
+                <p className="text-gray-600 text-sm">Showing</p>
+                <p className="text-3xl font-bold text-purple-600">{announcements.length}</p>
               </div>
-              <UserGroupIcon className="w-8 h-8 text-purple-400" />
+              <UserGroupIcon className="w-8 h-8 text-purple-600" />
             </div>
           </div>
         </div>
 
         {/* Success Message */}
         {successMessage && (
-          <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-4 mb-6">
-            <p className="text-green-200">{successMessage}</p>
+          <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
+            <p className="text-green-800">{successMessage}</p>
           </div>
         )}
 
         {/* Error Message */}
         {error && (
-          <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 mb-6">
-            <p className="text-red-200">{error}</p>
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <p className="text-red-800">{error}</p>
           </div>
         )}
 
         {/* Announcements */}
         {announcements.length === 0 ? (
-          <div className="text-center py-12 bg-white/5 backdrop-blur-lg rounded-2xl border border-white/20">
+          <div className="text-center py-12 bg-white rounded-2xl border border-gray-200 shadow-lg">
             <SpeakerWaveIcon className="w-20 h-20 text-gray-400 mx-auto mb-6" />
-            <h3 className="text-2xl font-semibold text-white mb-3">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-3">
               📢 No announcements found
             </h3>
-            <p className="text-gray-300 mb-6 max-w-md mx-auto">
+            <p className="text-gray-600 mb-6 max-w-md mx-auto">
               There are currently no announcements to display.
             </p>
           </div>
@@ -229,35 +229,35 @@ const AdminAnnouncements = () => {
             {announcements.map((announcement) => (
               <div
                 key={announcement._id}
-                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 transform transition-all duration-300 hover:scale-[1.01] hover:shadow-xl hover:shadow-orange-500/20"
+                className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg transform transition-all duration-300 hover:scale-[1.01] hover:shadow-xl"
               >
                 {/* Header */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3 flex-1">
-                    <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                    <div className="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center">
                       <span className="text-white font-bold text-sm">
                         {announcement.createdBy?.firstName?.charAt(0) || '?'}
                       </span>
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center space-x-2 flex-wrap">
-                        <h4 className="text-white font-semibold">
+                        <h4 className="text-gray-900 font-semibold">
                           {announcement.createdBy?.firstName} {announcement.createdBy?.lastName}
                         </h4>
-                        <span className="text-gray-400 text-sm">•</span>
-                        <span className="text-orange-300 text-sm font-medium">
+                        <span className="text-gray-500 text-sm">•</span>
+                        <span className="text-purple-600 text-sm font-medium">
                           {announcement.club?.name}
                         </span>
                         {announcement.club?.category && (
                           <>
-                            <span className="text-gray-400 text-sm">•</span>
-                            <span className="text-purple-300 text-xs bg-purple-500/20 border border-purple-400/50 px-2 py-1 rounded">
+                            <span className="text-gray-500 text-sm">•</span>
+                            <span className="text-purple-700 text-xs bg-purple-50 border border-purple-200 px-2 py-1 rounded">
                               {announcement.club.category}
                             </span>
                           </>
                         )}
                       </div>
-                      <div className="flex items-center space-x-4 text-gray-400 text-sm mt-1">
+                      <div className="flex items-center space-x-4 text-gray-600 text-sm mt-1">
                         <div className="flex items-center space-x-1">
                           <ClockIcon className="w-4 h-4" />
                           <span>{formatDate(announcement.createdAt)}</span>
@@ -277,24 +277,24 @@ const AdminAnnouncements = () => {
                     {/* Status Badge */}
                     <div className={`flex items-center px-3 py-1 rounded-lg text-xs font-semibold ${
                       announcement.isActive === false
-                        ? 'bg-red-500/30 border border-red-400/50 text-red-300'
-                        : 'bg-green-500/30 border border-green-400/50 text-green-300'
+                        ? 'bg-red-50 border border-red-200 text-red-800'
+                        : 'bg-green-50 border border-green-200 text-green-800'
                     }`}>
                       {announcement.isActive === false ? '🚫 DELETED' : '✅ ACTIVE'}
                     </div>
                     
-                    <div className="flex items-center px-3 py-1 bg-orange-500/20 border border-orange-400/50 text-orange-300 rounded-lg text-xs">
+                    <div className="flex items-center px-3 py-1 bg-purple-50 border border-purple-200 text-purple-700 rounded-lg text-xs">
                       <ExclamationTriangleIcon className="w-4 h-4 mr-1" />
                       ADMIN
                     </div>
                     <button
                       onClick={() => handleDeleteAnnouncement(announcement._id)}
                       disabled={deleting[announcement._id] || announcement.isActive === false}
-                      className="text-red-400 hover:text-red-300 transition-colors p-2 rounded-lg hover:bg-red-500/20 disabled:opacity-50"
+                      className="text-red-600 hover:text-red-700 transition-colors p-2 rounded-lg hover:bg-red-50 disabled:opacity-50"
                       title={announcement.isActive === false ? "Already deleted" : "Delete announcement (Admin)"}
                     >
                       {deleting[announcement._id] ? (
-                        <div className="w-5 h-5 border-2 border-red-400 border-t-transparent rounded-full animate-spin"></div>
+                        <div className="w-5 h-5 border-2 border-red-600 border-t-transparent rounded-full animate-spin"></div>
                       ) : (
                         <TrashIcon className="w-5 h-5" />
                       )}
@@ -304,14 +304,14 @@ const AdminAnnouncements = () => {
 
                 {/* Content */}
                 <div className="mb-4">
-                  <p className="text-gray-200 text-lg leading-relaxed whitespace-pre-wrap">
+                  <p className="text-gray-700 text-lg leading-relaxed whitespace-pre-wrap">
                     {announcement.message}
                   </p>
                 </div>
 
                 {/* Image */}
                 {announcement.image && (
-                  <div className="mb-4 rounded-xl overflow-hidden border border-white/20">
+                  <div className="mb-4 rounded-xl overflow-hidden border border-gray-200">
                     <img
                       src={`http://localhost:8000${announcement.image}`}
                       alt="Announcement"
@@ -324,11 +324,11 @@ const AdminAnnouncements = () => {
                 )}
 
                 {/* Footer Info */}
-                <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                  <div className="text-gray-400 text-sm">
+                <div className="flex items-center justify-between pt-4 border-t border-gray-200">
+                  <div className="text-gray-600 text-sm">
                     <span>Created by {announcement.createdBy?.email}</span>
                   </div>
-                  <div className="text-gray-400 text-sm">
+                  <div className="text-gray-600 text-sm">
                     <span>Club ID: {announcement.club?._id?.slice(-8)}</span>
                   </div>
                 </div>
@@ -340,12 +340,12 @@ const AdminAnnouncements = () => {
         {/* Pagination */}
         {pagination && pagination.totalPages > 1 && (
           <div className="mt-8 flex justify-center">
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-2 border border-white/20">
+            <div className="bg-white rounded-2xl p-2 border border-gray-200 shadow-lg">
               <div className="flex items-center space-x-2">
                 <button
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={!pagination.hasPrev}
-                  className="px-3 py-2 rounded-lg text-white disabled:text-gray-500 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
+                  className="px-3 py-2 rounded-lg text-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed hover:bg-gray-100 transition-colors"
                 >
                   Previous
                 </button>
@@ -355,8 +355,8 @@ const AdminAnnouncements = () => {
                     onClick={() => handlePageChange(page)}
                     className={`px-3 py-2 rounded-lg transition-colors ${
                       page === currentPage
-                        ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white'
-                        : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                        ? 'bg-purple-600 text-white'
+                        : 'text-gray-700 hover:bg-gray-100'
                     }`}
                   >
                     {page}
@@ -365,7 +365,7 @@ const AdminAnnouncements = () => {
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={!pagination.hasNext}
-                  className="px-3 py-2 rounded-lg text-white disabled:text-gray-500 disabled:cursor-not-allowed hover:bg-white/10 transition-colors"
+                  className="px-3 py-2 rounded-lg text-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed hover:bg-gray-100 transition-colors"
                 >
                   Next
                 </button>
