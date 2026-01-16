@@ -64,16 +64,16 @@ const BrowseClubs = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800 flex items-center justify-center">
-        <div className="text-white text-xl">Loading clubs...</div>
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
+        <div className="text-gray-700 text-xl">Loading clubs...</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       {/* Navigation */}
-      <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20">
+      <nav className="bg-purple-600 border-b border-purple-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/dashboard" className="text-white text-xl font-bold">
@@ -105,12 +105,12 @@ const BrowseClubs = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-white mb-4">Discover University Clubs</h1>
-          <p className="text-xl text-gray-300">Find and join clubs that match your interests</p>
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">Discover University Clubs</h1>
+          <p className="text-xl text-gray-600">Find and join clubs that match your interests</p>
         </div>
 
         {/* Search and Filter */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 mb-8 border border-white/20">
+        <div className="bg-white rounded-3xl p-6 mb-8 border border-gray-200 shadow-lg">
           <div className="flex flex-col md:flex-row gap-4">
             {/* Search */}
             <div className="flex-1 relative">
@@ -120,7 +120,7 @@ const BrowseClubs = () => {
                 placeholder="Search clubs, descriptions, or tags..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600"
               />
             </div>
 
@@ -130,10 +130,10 @@ const BrowseClubs = () => {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="pl-10 pr-8 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400 appearance-none"
+                className="pl-10 pr-8 py-3 bg-gray-50 border border-gray-300 rounded-xl text-gray-900 focus:outline-none focus:ring-2 focus:ring-purple-600 appearance-none"
               >
                 {categories.map(category => (
-                  <option key={category} value={category} className="bg-gray-800">
+                  <option key={category} value={category} className="bg-white">
                     {category === 'all' ? 'All Categories' : category}
                   </option>
                 ))}
@@ -144,8 +144,8 @@ const BrowseClubs = () => {
 
         {/* Error Message */}
         {error && (
-          <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 mb-6">
-            <p className="text-red-200">{error}</p>
+          <div className="bg-red-100 border border-red-400 rounded-lg p-4 mb-6">
+            <p className="text-red-700">{error}</p>
           </div>
         )}
 
@@ -154,33 +154,33 @@ const BrowseClubs = () => {
           {filteredClubs.map((club) => (
             <div
               key={club._id}
-              className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20 transform transition-all duration-300 hover:scale-105 hover:bg-white/15"
+              className="bg-white rounded-2xl p-6 border border-gray-200 shadow-lg transform transition-all duration-300 hover:scale-105"
             >
               {/* Club Header */}
               <div className="mb-4">
                 <div className="flex items-center justify-between mb-2">
-                  <span className="px-3 py-1 bg-purple-500/30 border border-purple-400/50 rounded-full text-purple-200 text-sm">
+                  <span className="px-3 py-1 bg-purple-100 border border-purple-300 rounded-full text-purple-700 text-sm">
                     {club.category}
                   </span>
-                  <div className="flex items-center text-gray-300 text-sm">
+                  <div className="flex items-center text-gray-600 text-sm">
                     <UserGroupIcon className="w-4 h-4 mr-1" />
                     {club.members?.length || 0} members
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{club.name}</h3>
-                <p className="text-gray-300 text-sm line-clamp-3">{club.description}</p>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">{club.name}</h3>
+                <p className="text-gray-600 text-sm line-clamp-3">{club.description}</p>
               </div>
 
               {/* Club Details */}
               <div className="space-y-2 mb-4">
                 {club.meetingTime && (
-                  <div className="flex items-center text-gray-300 text-sm">
+                  <div className="flex items-center text-gray-600 text-sm">
                     <CalendarIcon className="w-4 h-4 mr-2" />
                     {club.meetingTime}
                   </div>
                 )}
                 {club.location && (
-                  <div className="flex items-center text-gray-300 text-sm">
+                  <div className="flex items-center text-gray-600 text-sm">
                     <MapPinIcon className="w-4 h-4 mr-2" />
                     {club.location}
                   </div>
@@ -193,13 +193,13 @@ const BrowseClubs = () => {
                   {club.tags.slice(0, 3).map((tag, index) => (
                     <span
                       key={index}
-                      className="px-2 py-1 bg-blue-500/20 border border-blue-400/30 rounded text-blue-200 text-xs"
+                      className="px-2 py-1 bg-blue-100 border border-blue-300 rounded text-blue-700 text-xs"
                     >
                       {tag}
                     </span>
                   ))}
                   {club.tags.length > 3 && (
-                    <span className="px-2 py-1 bg-gray-500/20 border border-gray-400/30 rounded text-gray-300 text-xs">
+                    <span className="px-2 py-1 bg-gray-100 border border-gray-300 rounded text-gray-600 text-xs">
                       +{club.tags.length - 3} more
                     </span>
                   )}
@@ -210,13 +210,13 @@ const BrowseClubs = () => {
               <div className="flex gap-2">
                 <button
                   onClick={() => handleJoinClub(club._id)}
-                  className="flex-1 bg-gradient-to-r from-purple-500 to-blue-500 text-white py-2 px-4 rounded-lg font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                  className="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg font-semibold transform transition-all duration-300 hover:scale-105"
                 >
                   Apply to Join
                 </button>
                 <Link
                   to={`/clubs/${club._id}`}
-                  className="px-4 py-2 bg-white/10 border border-white/20 text-white rounded-lg hover:bg-white/20 transition-colors text-center"
+                  className="px-4 py-2 bg-gray-100 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-center"
                 >
                   View Details
                 </Link>
@@ -229,8 +229,8 @@ const BrowseClubs = () => {
         {filteredClubs.length === 0 && !loading && (
           <div className="text-center py-12">
             <UserGroupIcon className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-2">No clubs found</h3>
-            <p className="text-gray-300">Try adjusting your search or filter criteria</p>
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">No clubs found</h3>
+            <p className="text-gray-600">Try adjusting your search or filter criteria</p>
           </div>
         )}
       </div>

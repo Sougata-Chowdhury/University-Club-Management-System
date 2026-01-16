@@ -231,9 +231,9 @@ const Announcements = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800 flex items-center justify-center">
-        <div className="text-white text-xl flex items-center">
-          <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin mr-3"></div>
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
+        <div className="text-gray-700 text-xl flex items-center">
+          <div className="w-6 h-6 border-2 border-purple-600 border-t-transparent rounded-full animate-spin mr-3"></div>
           Loading announcements...
         </div>
       </div>
@@ -241,9 +241,9 @@ const Announcements = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       {/* Compact Navigation Bar */}
-      <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20 sticky top-0 z-50 shadow-lg">
+      <nav className="bg-purple-600 border-b border-purple-700 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14">
             <div className="flex items-center space-x-4">
@@ -265,7 +265,7 @@ const Announcements = () => {
             <div className="flex items-center space-x-4">
               <Link
                 to="/create-announcement"
-                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg flex items-center space-x-1 sm:space-x-2 transform transition-all duration-300 hover:scale-105 shadow-lg text-sm"
+                className="bg-purple-700 hover:bg-purple-800 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg flex items-center space-x-1 sm:space-x-2 transform transition-all duration-300 hover:scale-105 shadow-lg text-sm"
               >
                 <PlusIcon className="w-4 h-4" />
                 <span className="font-semibold">New</span>
@@ -276,7 +276,7 @@ const Announcements = () => {
         
         {/* Tabs Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-3">
-          <div className="flex space-x-2 bg-white/5 backdrop-blur-sm rounded-xl p-1 border border-white/10">
+          <div className="flex space-x-2 bg-purple-700 rounded-xl p-1 border border-purple-800">
             <button
               onClick={() => {
                 setActiveTab('all');
@@ -284,8 +284,8 @@ const Announcements = () => {
               }}
               className={`flex-1 py-2.5 px-3 rounded-lg text-sm font-semibold transition-all flex items-center justify-center ${
                 activeTab === 'all'
-                  ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg'
-                  : 'text-gray-300 hover:text-white hover:bg-white/5'
+                  ? 'bg-purple-800 text-white shadow-lg'
+                  : 'text-purple-100 hover:text-white hover:bg-purple-600'
               }`}
             >
               <SpeakerWaveIcon className="w-4 h-4 mr-2" />
@@ -298,8 +298,8 @@ const Announcements = () => {
               }}
               className={`flex-1 py-2.5 px-3 rounded-lg text-sm font-semibold transition-all flex items-center justify-center ${
                 activeTab === 'my'
-                  ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg'
-                  : 'text-gray-300 hover:text-white hover:bg-white/5'
+                  ? 'bg-purple-800 text-white shadow-lg'
+                  : 'text-purple-100 hover:text-white hover:bg-purple-600'
               }`}
             >
               <UserGroupIcon className="w-4 h-4 mr-2" />
@@ -312,26 +312,26 @@ const Announcements = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         {/* Success Message */}
         {successMessage && (
-          <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-3 mb-4">
-            <p className="text-green-200 text-sm">{successMessage}</p>
+          <div className="bg-green-100 border border-green-400 rounded-lg p-3 mb-4">
+            <p className="text-green-700 text-sm">{successMessage}</p>
           </div>
         )}
 
         {/* Error Message */}
         {error && (
-          <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-3 mb-4">
-            <p className="text-red-200 text-sm">{error}</p>
+          <div className="bg-red-100 border border-red-400 rounded-lg p-3 mb-4">
+            <p className="text-red-700 text-sm">{error}</p>
           </div>
         )}
 
         {/* Announcements */}
         {currentAnnouncements.length === 0 ? (
-          <div className="text-center py-12 bg-white/5 backdrop-blur-lg rounded-xl border border-white/20">
+          <div className="text-center py-12 bg-white rounded-xl border border-gray-200 shadow-lg">
             <SpeakerWaveIcon className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-white mb-2">
+            <h3 className="text-xl font-semibold text-gray-800 mb-2">
               {activeTab === 'all' ? '📢 No announcements yet' : '📝 No announcements created'}
             </h3>
-            <p className="text-gray-300 mb-4 text-sm max-w-md mx-auto">
+            <p className="text-gray-600 mb-4 text-sm max-w-md mx-auto">
               {activeTab === 'all' 
                 ? 'Check back later for updates from university clubs!'
                 : 'Start sharing updates with your club members by creating your first announcement.'
@@ -340,7 +340,7 @@ const Announcements = () => {
             {activeTab === 'my' && (
               <Link
                 to="/create-announcement"
-                className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-lg font-semibold transform transition-all duration-300 hover:scale-105 text-sm"
+                className="inline-flex items-center px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-semibold transform transition-all duration-300 hover:scale-105 text-sm"
               >
                 <PlusIcon className="w-4 h-4 mr-2" />
                 Create Your First Announcement
@@ -352,27 +352,27 @@ const Announcements = () => {
             {currentAnnouncements.map((announcement) => (
               <div
                 key={announcement._id}
-                className="bg-white/10 backdrop-blur-lg rounded-xl p-4 sm:p-5 border border-white/20 transform transition-all duration-300 hover:scale-[1.01] hover:shadow-xl hover:shadow-purple-500/10"
+                className="bg-white rounded-xl p-4 sm:p-5 border border-gray-200 shadow-lg transform transition-all duration-300 hover:scale-[1.01] hover:shadow-xl"
               >
                 {/* Header */}
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center space-x-2 sm:space-x-3">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0">
                       <span className="text-white font-bold text-xs sm:text-sm">
                         {announcement.createdBy?.firstName?.charAt(0) || '?'}
                       </span>
                     </div>
                     <div className="min-w-0">
                       <div className="flex items-center space-x-2 flex-wrap">
-                        <h4 className="text-white font-semibold text-sm sm:text-base truncate">
+                        <h4 className="text-gray-800 font-semibold text-sm sm:text-base truncate">
                           {announcement.createdBy?.firstName} {announcement.createdBy?.lastName}
                         </h4>
                         <span className="text-gray-400 text-xs sm:text-sm">•</span>
-                        <span className="text-purple-300 text-xs sm:text-sm font-medium">
+                        <span className="text-purple-600 text-xs sm:text-sm font-medium">
                           {announcement.club?.name}
                         </span>
                       </div>
-                      <div className="flex items-center space-x-1 sm:space-x-2 text-gray-400 text-xs sm:text-sm">
+                      <div className="flex items-center space-x-1 sm:space-x-2 text-gray-500 text-xs sm:text-sm">
                         <ClockIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                         <span>{formatDate(announcement.createdAt)}</span>
                       </div>
@@ -384,7 +384,7 @@ const Announcements = () => {
                         <button
                           onClick={() => startEdit(announcement._id, announcement.message)}
                           disabled={editing[announcement._id] || deleting[announcement._id]}
-                          className="text-blue-400 hover:text-blue-300 transition-colors p-1.5 sm:p-2 rounded-lg hover:bg-blue-500/20 disabled:opacity-50"
+                          className="text-blue-600 hover:text-blue-700 transition-colors p-1.5 sm:p-2 rounded-lg hover:bg-blue-100 disabled:opacity-50"
                           title="Edit announcement"
                         >
                           <PencilIcon className="w-4 h-4 sm:w-5 sm:h-5" />
@@ -392,11 +392,11 @@ const Announcements = () => {
                         <button
                           onClick={() => handleDeleteAnnouncement(announcement._id)}
                           disabled={deleting[announcement._id] || editing[announcement._id]}
-                          className="text-red-400 hover:text-red-300 transition-colors p-1.5 sm:p-2 rounded-lg hover:bg-red-500/20 disabled:opacity-50"
+                          className="text-red-600 hover:text-red-700 transition-colors p-1.5 sm:p-2 rounded-lg hover:bg-red-100 disabled:opacity-50"
                           title="Delete announcement"
                         >
                           {deleting[announcement._id] ? (
-                            <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-red-400 border-t-transparent rounded-full animate-spin"></div>
+                            <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-red-600 border-t-transparent rounded-full animate-spin"></div>
                           ) : (
                             <TrashIcon className="w-4 h-4 sm:w-5 sm:h-5" />
                           )}
@@ -435,7 +435,7 @@ const Announcements = () => {
                       <textarea
                         value={editMessage}
                         onChange={(e) => setEditMessage(e.target.value)}
-                        className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none text-sm"
+                        className="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent transition-all resize-none text-sm"
                         rows={4}
                         placeholder="Edit your announcement..."
                       />
@@ -443,11 +443,11 @@ const Announcements = () => {
                         <button
                           onClick={() => saveEdit(announcement._id)}
                           disabled={editing[announcement._id] || !editMessage.trim()}
-                          className="px-3 py-1.5 bg-green-500/20 border border-green-400/50 text-green-300 rounded-lg hover:bg-green-500/30 transition-colors disabled:opacity-50 text-xs font-medium"
+                          className="px-3 py-1.5 bg-green-100 border border-green-400 text-green-700 rounded-lg hover:bg-green-200 transition-colors disabled:opacity-50 text-xs font-medium"
                         >
                           {editing[announcement._id] ? (
                             <>
-                              <div className="w-3 h-3 border-2 border-green-400 border-t-transparent rounded-full animate-spin inline mr-1"></div>
+                              <div className="w-3 h-3 border-2 border-green-700 border-t-transparent rounded-full animate-spin inline mr-1"></div>
                               Saving...
                             </>
                           ) : (
@@ -457,14 +457,14 @@ const Announcements = () => {
                         <button
                           onClick={cancelEdit}
                           disabled={editing[announcement._id]}
-                          className="px-3 py-1.5 bg-gray-500/20 border border-gray-400/50 text-gray-300 rounded-lg hover:bg-gray-500/30 transition-colors disabled:opacity-50 text-xs font-medium"
+                          className="px-3 py-1.5 bg-gray-100 border border-gray-400 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors disabled:opacity-50 text-xs font-medium"
                         >
                           Cancel
                         </button>
                       </div>
                     </div>
                   ) : (
-                    <p className="text-gray-200 text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
+                    <p className="text-gray-700 text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
                       {announcement.message}
                     </p>
                   )}
@@ -472,7 +472,7 @@ const Announcements = () => {
 
                 {/* Image */}
                 {announcement.image && (
-                  <div className="mb-3 rounded-lg overflow-hidden border border-white/20">
+                  <div className="mb-3 rounded-lg overflow-hidden border border-gray-200">
                     <img
                       src={`http://localhost:8000${announcement.image}`}
                       alt="Announcement"
@@ -485,15 +485,15 @@ const Announcements = () => {
                 )}
 
                 {/* Actions */}
-                <div className="flex items-center justify-between pt-3 border-t border-white/10">
+                <div className="flex items-center justify-between pt-3 border-t border-gray-200">
                   <div className="flex items-center space-x-3 sm:space-x-4">
                     <button
                       onClick={() => handleLike(announcement._id)}
                       disabled={liking[announcement._id]}
                       className={`flex items-center space-x-1.5 px-2.5 py-1.5 rounded-lg transition-all transform hover:scale-105 text-xs sm:text-sm ${
                         announcement.liked
-                          ? 'bg-red-500/20 border border-red-400/50 text-red-300'
-                          : 'bg-white/5 border border-white/20 text-gray-300 hover:bg-white/10'
+                          ? 'bg-red-100 border border-red-400 text-red-700'
+                          : 'bg-gray-100 border border-gray-300 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
                       {announcement.liked ? (
@@ -503,14 +503,14 @@ const Announcements = () => {
                       )}
                       <span className="font-medium">{announcement.likes}</span>
                     </button>
-                    <div className="flex items-center space-x-1.5 text-gray-400 text-xs sm:text-sm">
+                    <div className="flex items-center space-x-1.5 text-gray-600 text-xs sm:text-sm">
                       <ChatBubbleLeftIcon className="w-4 h-4" />
                       <span>Comments</span>
                     </div>
                   </div>
-                  <div className="text-gray-400 text-xs sm:text-sm">
+                  <div className="text-gray-600 text-xs sm:text-sm">
                     {announcement.club?.category && (
-                      <span className="bg-purple-500/20 border border-purple-400/50 px-2 py-0.5 sm:py-1 rounded text-purple-300">
+                      <span className="bg-purple-100 border border-purple-300 px-2 py-0.5 sm:py-1 rounded text-purple-700">
                         {announcement.club.category}
                       </span>
                     )}
@@ -524,12 +524,12 @@ const Announcements = () => {
         {/* Pagination */}
         {currentPagination && currentPagination.totalPages > 1 && (
           <div className="mt-6 flex justify-center">
-            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-1.5 border border-white/20">
+            <div className="bg-white rounded-xl p-1.5 border border-gray-200 shadow-lg">
               <div className="flex items-center space-x-1">
                 <button
                   onClick={() => handlePageChange(currentPage - 1)}
                   disabled={!currentPagination.hasPrev}
-                  className="px-2.5 py-1.5 rounded-lg text-white disabled:text-gray-500 disabled:cursor-not-allowed hover:bg-white/10 transition-colors text-xs sm:text-sm"
+                  className="px-2.5 py-1.5 rounded-lg text-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed hover:bg-gray-100 transition-colors text-xs sm:text-sm"
                 >
                   Previous
                 </button>
@@ -539,8 +539,8 @@ const Announcements = () => {
                     onClick={() => handlePageChange(page)}
                     className={`px-2.5 py-1.5 rounded-lg transition-colors text-xs sm:text-sm ${
                       page === currentPage
-                        ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white'
-                        : 'text-gray-300 hover:bg-white/10 hover:text-white'
+                        ? 'bg-purple-600 text-white'
+                        : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800'
                     }`}
                   >
                     {page}
@@ -549,7 +549,7 @@ const Announcements = () => {
                 <button
                   onClick={() => handlePageChange(currentPage + 1)}
                   disabled={!currentPagination.hasNext}
-                  className="px-2.5 py-1.5 rounded-lg text-white disabled:text-gray-500 disabled:cursor-not-allowed hover:bg-white/10 transition-colors text-xs sm:text-sm"
+                  className="px-2.5 py-1.5 rounded-lg text-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed hover:bg-gray-100 transition-colors text-xs sm:text-sm"
                 >
                   Next
                 </button>
@@ -562,7 +562,7 @@ const Announcements = () => {
       {/* Floating Action Button */}
       <Link
         to="/create-announcement"
-        className="fixed bottom-6 right-6 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white p-3 rounded-full shadow-2xl transform transition-all duration-300 hover:scale-110 hover:shadow-purple-500/25 z-50"
+        className="fixed bottom-6 right-6 bg-purple-600 hover:bg-purple-700 text-white p-3 rounded-full shadow-2xl transform transition-all duration-300 hover:scale-110 z-50"
         title="Create New Announcement"
       >
         <PlusIcon className="w-5 h-5" />
