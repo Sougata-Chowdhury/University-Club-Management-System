@@ -115,23 +115,23 @@ const MyFeedback = () => {
     const statusMap = {
       pending: { 
         label: 'Pending Review',
-        bgClass: 'bg-yellow-500/20 border-yellow-400/50',
-        textClass: 'text-yellow-200'
+        bgClass: 'bg-yellow-50 border-yellow-200',
+        textClass: 'text-yellow-800'
       },
       approved: { 
         label: 'Approved',
-        bgClass: 'bg-green-500/20 border-green-400/50',
-        textClass: 'text-green-200'
+        bgClass: 'bg-green-50 border-green-200',
+        textClass: 'text-green-800'
       },
       rejected: { 
         label: 'Rejected',
-        bgClass: 'bg-red-500/20 border-red-400/50',
-        textClass: 'text-red-200'
+        bgClass: 'bg-red-50 border-red-200',
+        textClass: 'text-red-800'
       },
       under_review: { 
         label: 'Under Review',
-        bgClass: 'bg-blue-500/20 border-blue-400/50',
-        textClass: 'text-blue-200'
+        bgClass: 'bg-purple-50 border-purple-200',
+        textClass: 'text-purple-900'
       },
     };
     return statusMap[status] || statusMap.pending;
@@ -157,14 +157,14 @@ const MyFeedback = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       {/* Navigation Bar */}
-      <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20 sticky top-0 z-50 shadow-lg">
+      <nav className="bg-purple-600 border-b border-purple-700 sticky top-0 z-50 shadow-lg">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6">
           <div className="flex justify-between items-center h-14">
             {/* Logo */}
             <Link to="/dashboard" className="flex items-center space-x-2">
-              <div className="bg-white/20 rounded-lg p-1.5">
+              <div className="bg-purple-500 rounded-lg p-1.5">
                 <UserGroupIcon className="h-5 w-5 text-white" />
               </div>
               <h1 className="text-white text-base font-bold hidden sm:block">Club Portal</h1>
@@ -178,7 +178,7 @@ const MyFeedback = () => {
               <div className="relative" ref={quickMenuRef}>
                 <button
                   onClick={() => setShowQuickMenu(!showQuickMenu)}
-                  className="bg-white/10 hover:bg-white/20 text-white px-2 sm:px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 border border-white/20 text-sm"
+                  className="bg-purple-700 hover:bg-purple-800 text-white px-2 sm:px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 border border-purple-600 text-sm"
                 >
                   <PlusIcon className="h-4 w-4" />
                   <span className="hidden sm:inline">Quick</span>
@@ -202,7 +202,7 @@ const MyFeedback = () => {
                 )}
               </div>
 
-              <Link to="/dashboard" className="bg-white/20 hover:bg-white/30 text-white px-2 sm:px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 border border-white/30 text-sm">
+              <Link to="/dashboard" className="bg-purple-700 hover:bg-purple-800 text-white px-2 sm:px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 border border-purple-600 text-sm">
                 <HomeIcon className="h-4 w-4" />
                 <span className="hidden sm:inline">Dashboard</span>
               </Link>
@@ -218,7 +218,7 @@ const MyFeedback = () => {
               <div className="relative" ref={userMenuRef}>
                 <button
                   onClick={() => setShowUserMenu(!showUserMenu)}
-                  className="bg-white/10 hover:bg-white/20 text-white px-2 sm:px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 border border-white/20 text-sm"
+                  className="bg-purple-700 hover:bg-purple-800 text-white px-2 sm:px-3 py-1.5 rounded-lg transition-all flex items-center space-x-1 border border-purple-600 text-sm"
                 >
                   <UserIcon className="h-4 w-4" />
                   <span className="hidden md:inline max-w-[100px] truncate">{currentUser?.firstName || 'User'}</span>
@@ -254,29 +254,29 @@ const MyFeedback = () => {
       <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-4">
         {/* Header */}
         <div className="mb-4">
-          <h1 className="text-2xl font-bold text-white mb-1">My Feedback</h1>
-          <p className="text-blue-100 text-sm mb-3">View and manage your feedback submissions</p>
+          <h1 className="text-2xl font-bold text-gray-900 mb-1">My Feedback</h1>
+          <p className="text-gray-700 text-sm mb-3">View and manage your feedback submissions</p>
         </div>
 
         {/* Error Alert */}
         {error && (
-          <div className="bg-red-500/20 border border-red-400/50 rounded-lg p-2 mb-3 text-red-200 text-sm">
+          <div className="bg-red-50 border border-red-200 rounded-lg p-2 mb-3 text-red-800 text-sm">
             {error}
           </div>
         )}
 
         {/* Search and Tabs */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-xl border border-white/20 mb-3">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-lg mb-3">
           {/* Search */}
-          <div className="p-3 border-b border-white/10">
+          <div className="p-3 border-b border-gray-200">
             <div className="relative">
-              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-300" />
+              <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
               <input
                 type="text"
                 placeholder="Search feedback..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full bg-white/5 border border-white/20 rounded-lg pl-10 pr-3 py-1.5 text-white text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full bg-gray-50 border border-gray-300 rounded-lg pl-10 pr-3 py-1.5 text-gray-900 text-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500"
               />
             </div>
           </div>
@@ -289,8 +289,8 @@ const MyFeedback = () => {
                 onClick={() => { setCurrentTab(index); setPage(1); }}
                 className={`px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
                   currentTab === index
-                    ? 'text-white border-b-2 border-purple-400'
-                    : 'text-gray-300 hover:text-white'
+                    ? 'text-purple-600 border-b-2 border-purple-600 bg-purple-50'
+                    : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
                 {tab.label}
@@ -303,22 +303,22 @@ const MyFeedback = () => {
         <div className="space-y-2">
           {loading && (
             <div className="flex justify-center py-8">
-              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-white"></div>
+              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-purple-600"></div>
             </div>
           )}
 
           {!loading && feedback.length === 0 && (
-            <div className="bg-white/10 backdrop-blur-lg rounded-xl p-8 text-center border border-white/20">
+            <div className="bg-white rounded-xl p-8 text-center border border-gray-200 shadow-lg">
               <ChatBubbleLeftRightIcon className="h-12 w-12 text-gray-400 mx-auto mb-3" />
-              <h3 className="text-lg font-bold text-white mb-1">No feedback found</h3>
-              <p className="text-gray-300 text-sm">No feedback submissions match your filters.</p>
+              <h3 className="text-lg font-bold text-gray-900 mb-1">No feedback found</h3>
+              <p className="text-gray-600 text-sm">No feedback submissions match your filters.</p>
             </div>
           )}
 
           {!loading && feedback.map((item) => {
             const statusInfo = getStatusInfo(item.status);
             return (
-              <div key={item._id} className="bg-white/10 backdrop-blur-lg rounded-xl p-3 border border-white/20">
+              <div key={item._id} className="bg-white rounded-xl p-3 border border-gray-200 shadow-lg">
                 {/* Header */}
                 <div className="flex justify-between items-start mb-2">
                   <div className="flex items-center space-x-2 flex-1">
@@ -327,7 +327,7 @@ const MyFeedback = () => {
                       {statusInfo.label}
                     </span>
                     {item.category && (
-                      <span className="px-2 py-0.5 rounded text-xs bg-purple-500/20 text-purple-200 border border-purple-400/30">
+                      <span className="px-2 py-0.5 rounded text-xs bg-purple-50 text-purple-900 border border-purple-200">
                         {item.category}
                       </span>
                     )}
@@ -342,27 +342,27 @@ const MyFeedback = () => {
 
                 {/* Target Info */}
                 {item.targetInfo && (
-                  <div className="bg-purple-500/10 border border-purple-400/20 rounded-lg p-2 mb-2">
-                    <p className="text-xs text-purple-200">
+                  <div className="bg-purple-50 border border-purple-200 rounded-lg p-2 mb-2">
+                    <p className="text-xs text-purple-900">
                       Feedback for {item.targetType}:
                     </p>
-                    <p className="text-sm font-semibold text-white">{item.targetInfo.name || item.targetInfo.title}</p>
+                    <p className="text-sm font-semibold text-gray-900">{item.targetInfo.name || item.targetInfo.title}</p>
                   </div>
                 )}
 
                 {/* Comment */}
-                <p className="text-sm text-white mb-2 leading-relaxed">{item.comment}</p>
+                <p className="text-sm text-gray-900 mb-2 leading-relaxed">{item.comment}</p>
 
                 {/* Admin Response */}
                 {item.adminResponse && (
-                  <div className="bg-green-500/10 border border-green-400/20 rounded-lg p-2 mb-2">
-                    <p className="text-xs text-green-200">Admin Response:</p>
-                    <p className="text-sm text-white">{item.adminResponse}</p>
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-2 mb-2">
+                    <p className="text-xs text-green-800">Admin Response:</p>
+                    <p className="text-sm text-gray-900">{item.adminResponse}</p>
                   </div>
                 )}
 
                 {/* Footer */}
-                <div className="flex justify-between items-center text-xs text-gray-300">
+                <div className="flex justify-between items-center text-xs text-gray-600">
                   <span>Submitted {formatDistanceToNow(new Date(item.createdAt))} ago</span>
                   <div className="flex items-center space-x-1">
                     <HandThumbUpIcon className="h-3 w-3" />
@@ -379,19 +379,19 @@ const MyFeedback = () => {
               <button
                 disabled={page === 1}
                 onClick={() => setPage(prev => prev - 1)}
-                className="bg-white/10 hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed text-white px-3 py-1.5 rounded-lg transition-all text-sm border border-white/20"
+                className="bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-gray-700 px-3 py-1.5 rounded-lg transition-all text-sm border border-gray-300 shadow"
               >
                 Previous
               </button>
               
-              <span className="text-white text-sm">
+              <span className="text-gray-900 text-sm">
                 Page {page} of {totalPages}
               </span>
               
               <button
                 disabled={page === totalPages}
                 onClick={() => setPage(prev => prev + 1)}
-                className="bg-white/10 hover:bg-white/20 disabled:opacity-50 disabled:cursor-not-allowed text-white px-3 py-1.5 rounded-lg transition-all text-sm border border-white/20"
+                className="bg-white hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed text-gray-700 px-3 py-1.5 rounded-lg transition-all text-sm border border-gray-300 shadow"
               >
                 Next
               </button>

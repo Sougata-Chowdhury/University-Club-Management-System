@@ -125,18 +125,18 @@ const ManageClub = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800 flex items-center justify-center">
-        <div className="text-white text-xl">Loading club management...</div>
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
+        <div className="text-gray-900 text-xl">Loading club management...</div>
       </div>
     );
   }
 
   if (!club) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-white mb-4">Club not found</h2>
-          <Link to="/my-clubs" className="text-purple-300 hover:text-purple-200">
+          <h2 className="text-2xl font-bold text-gray-900 mb-4">Club not found</h2>
+          <Link to="/my-clubs" className="text-purple-600 hover:text-purple-700">
             Return to My Clubs
           </Link>
         </div>
@@ -148,19 +148,19 @@ const ManageClub = () => {
   const approvedApplications = applications.filter(app => app.status === 'approved');
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-700 to-indigo-800">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100">
       {/* Navigation */}
-      <nav className="bg-white/10 backdrop-blur-lg border-b border-white/20">
+      <nav className="bg-purple-600 border-b border-purple-700 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link to="/dashboard" className="text-white text-xl font-bold">
               University Clubs
             </Link>
             <div className="flex items-center space-x-4">
-              <Link to="/my-clubs" className="text-white hover:text-gray-300 transition-colors">
+              <Link to="/my-clubs" className="text-white hover:text-purple-100 transition-colors">
                 My Clubs
               </Link>
-              <Link to="/dashboard" className="text-white hover:text-gray-300 transition-colors">
+              <Link to="/dashboard" className="text-white hover:text-purple-100 transition-colors">
                 Dashboard
               </Link>
             </div>
@@ -171,46 +171,46 @@ const ManageClub = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-purple-600 rounded-full mb-4">
             <CogIcon className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-4xl font-bold text-white mb-2">Manage Club</h1>
-          <h2 className="text-2xl text-purple-300 mb-4">{club.name}</h2>
+          <h1 className="text-4xl font-bold text-gray-900 mb-2">Manage Club</h1>
+          <h2 className="text-2xl text-purple-600 mb-4">{club.name}</h2>
         </div>
 
         {/* Error Message */}
         {error && (
-          <div className="bg-red-500/20 border border-red-500/50 rounded-lg p-4 mb-6">
-            <p className="text-red-200">{error}</p>
+          <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
+            <p className="text-red-800">{error}</p>
           </div>
         )}
 
         {/* Club Overview */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 mb-8 border border-white/20">
-          <h3 className="text-xl font-bold text-white mb-4">Club Overview</h3>
+        <div className="bg-white rounded-3xl p-6 mb-8 border border-gray-200 shadow-lg">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Club Overview</h3>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-300 mb-2">
+              <div className="text-3xl font-bold text-purple-600 mb-2">
                 {club.members?.length || 0}
               </div>
-              <div className="text-gray-300">Current Members</div>
+              <div className="text-gray-600">Current Members</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-yellow-300 mb-2">
+              <div className="text-3xl font-bold text-yellow-600 mb-2">
                 {pendingApplications.length}
               </div>
-              <div className="text-gray-300">Pending Applications</div>
+              <div className="text-gray-600">Pending Applications</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-green-300 mb-2">
+              <div className="text-3xl font-bold text-green-600 mb-2">
                 {club.maxMembers || '∞'}
               </div>
-              <div className="text-gray-300">Max Members</div>
+              <div className="text-gray-600">Max Members</div>
             </div>
             <div className="text-center">
               <Link 
                 to={`/clubs/${clubId}/manage-payments`}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-4 rounded-lg transition-colors inline-flex items-center justify-center space-x-2"
+                className="bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-lg transition-colors inline-flex items-center justify-center space-x-2 shadow"
               >
                 <CurrencyDollarIcon className="w-5 h-5" />
                 <span>Manage Payments</span>
@@ -220,26 +220,26 @@ const ManageClub = () => {
         </div>
 
         {/* Club Details */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 mb-8 border border-white/20">
-          <h3 className="text-xl font-bold text-white mb-4">Club Details</h3>
+        <div className="bg-white rounded-3xl p-6 mb-8 border border-gray-200 shadow-lg">
+          <h3 className="text-xl font-bold text-gray-900 mb-4">Club Details</h3>
           <div className="space-y-4">
             <div>
-              <h4 className="text-white font-semibold mb-2">Description</h4>
-              <p className="text-gray-300">{club.description}</p>
+              <h4 className="text-gray-900 font-semibold mb-2">Description</h4>
+              <p className="text-gray-700">{club.description}</p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <h4 className="text-white font-semibold mb-2">Category</h4>
-                <span className="px-3 py-1 bg-purple-500/30 border border-purple-400/50 rounded-full text-purple-200 text-sm">
+                <h4 className="text-gray-900 font-semibold mb-2">Category</h4>
+                <span className="px-3 py-1 bg-purple-50 border border-purple-200 rounded-full text-purple-900 text-sm">
                   {club.category}
                 </span>
               </div>
               
               {club.location && (
                 <div>
-                  <h4 className="text-white font-semibold mb-2">Location</h4>
-                  <div className="flex items-center text-gray-300">
+                  <h4 className="text-gray-900 font-semibold mb-2">Location</h4>
+                  <div className="flex items-center text-gray-700">
                     <MapPinIcon className="w-4 h-4 mr-2" />
                     {club.location}
                   </div>
@@ -248,8 +248,8 @@ const ManageClub = () => {
               
               {club.meetingTime && (
                 <div>
-                  <h4 className="text-white font-semibold mb-2">Meeting Time</h4>
-                  <div className="flex items-center text-gray-300">
+                  <h4 className="text-gray-900 font-semibold mb-2">Meeting Time</h4>
+                  <div className="flex items-center text-gray-700">
                     <CalendarIcon className="w-4 h-4 mr-2" />
                     {club.meetingTime}
                   </div>
@@ -259,12 +259,12 @@ const ManageClub = () => {
 
             {club.tags && club.tags.length > 0 && (
               <div>
-                <h4 className="text-white font-semibold mb-2">Tags</h4>
+                <h4 className="text-gray-900 font-semibold mb-2">Tags</h4>
                 <div className="flex flex-wrap gap-2">
                   {club.tags.map((tag, index) => (
                     <span
                       key={index}
-                      className="px-2 py-1 bg-blue-500/20 border border-blue-400/30 rounded text-blue-200 text-sm"
+                      className="px-2 py-1 bg-purple-50 border border-purple-200 rounded text-purple-900 text-sm"
                     >
                       {tag}
                     </span>
@@ -301,11 +301,11 @@ const ManageClub = () => {
                           'Unknown User'
                         }
                       </h4>
-                      <div className="flex items-center text-gray-300 text-sm mt-1">
+                      <div className="flex items-center text-gray-700 text-sm mt-1">
                         <EnvelopeIcon className="w-4 h-4 mr-1" />
                         {application.userId?.email || 'No email available'}
                       </div>
-                      <div className="text-gray-400 text-sm mt-1">
+                      <div className="text-gray-600 text-sm mt-1">
                         Applied: {new Date(application.appliedAt).toLocaleDateString()}
                       </div>
                     </div>
@@ -314,7 +314,7 @@ const ManageClub = () => {
                       <button
                         onClick={() => handleApplicationAction(application._id, 'approve')}
                         disabled={actionLoading === application._id}
-                        className="flex items-center px-4 py-2 bg-green-500/20 border border-green-400/50 text-green-200 rounded-lg hover:bg-green-500/30 transition-colors disabled:opacity-50"
+                        className="flex items-center px-4 py-2 bg-green-50 border border-green-200 text-green-800 rounded-lg hover:bg-green-100 transition-colors disabled:opacity-50 shadow"
                       >
                         <CheckCircleIcon className="w-4 h-4 mr-1" />
                         {actionLoading === application._id ? 'Processing...' : 'Approve'}
@@ -322,7 +322,7 @@ const ManageClub = () => {
                       <button
                         onClick={() => handleApplicationAction(application._id, 'reject')}
                         disabled={actionLoading === application._id}
-                        className="flex items-center px-4 py-2 bg-red-500/20 border border-red-400/50 text-red-200 rounded-lg hover:bg-red-500/30 transition-colors disabled:opacity-50"
+                        className="flex items-center px-4 py-2 bg-red-50 border border-red-200 text-red-800 rounded-lg hover:bg-red-100 transition-colors disabled:opacity-50 shadow"
                       >
                         <XCircleIcon className="w-4 h-4 mr-1" />
                         {actionLoading === application._id ? 'Processing...' : 'Reject'}
@@ -336,46 +336,46 @@ const ManageClub = () => {
         </div>
 
         {/* Current Members */}
-        <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-6 border border-white/20">
-          <h3 className="text-xl font-bold text-white mb-6">
+        <div className="bg-white rounded-3xl p-6 border border-gray-200 shadow-lg">
+          <h3 className="text-xl font-bold text-gray-900 mb-6">
             Current Members ({club.members?.length || 0})
           </h3>
           
           {!club.members || club.members.length === 0 ? (
             <div className="text-center py-8">
               <UserGroupIcon className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <p className="text-gray-300">No approved members yet</p>
+              <p className="text-gray-600">No approved members yet</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {club.members.map((member) => (
                 <div
                   key={member._id}
-                  className="bg-white/5 rounded-xl p-4 border border-white/10"
+                  className="bg-gray-50 rounded-xl p-4 border border-gray-200"
                 >
-                  <h4 className="text-white font-semibold mb-1">
+                  <h4 className="text-gray-900 font-semibold mb-1">
                     {member.firstName && member.lastName ? 
                       `${member.firstName} ${member.lastName}` : 
                       'Unknown User'
                     }
                   </h4>
-                  <div className="flex items-center text-gray-300 text-sm mb-2">
+                  <div className="flex items-center text-gray-700 text-sm mb-2">
                     <EnvelopeIcon className="w-4 h-4 mr-1" />
                     {member.email || 'No email available'}
                   </div>
-                  <div className="text-gray-400 text-sm mb-3">
+                  <div className="text-gray-600 text-sm mb-3">
                     Member since: {new Date(member.createdAt || Date.now()).toLocaleDateString()}
                   </div>
                   {currentUser && member._id !== currentUser.id ? (
                     <button
                       onClick={() => handleRemoveMember(member._id)}
                       disabled={removeLoading === member._id}
-                      className="w-full bg-red-500/20 hover:bg-red-500/30 border border-red-400/30 text-red-200 px-3 py-2 rounded-lg transition-all duration-200 text-sm disabled:opacity-50"
+                      className="w-full bg-red-50 hover:bg-red-100 border border-red-200 text-red-800 px-3 py-2 rounded-lg transition-all duration-200 text-sm disabled:opacity-50 shadow"
                     >
                       {removeLoading === member._id ? 'Removing...' : 'Remove Member'}
                     </button>
                   ) : (
-                    <div className="w-full bg-blue-500/20 border border-blue-400/30 text-blue-200 px-3 py-2 rounded-lg text-sm text-center">
+                    <div className="w-full bg-purple-50 border border-purple-200 text-purple-900 px-3 py-2 rounded-lg text-sm text-center">
                       Club Creator
                     </div>
                   )}
