@@ -67,8 +67,11 @@ const Register = () => {
         }}
       >
         <Paper elevation={3} sx={{ padding: 4, width: '100%' }}>
-          <Typography component="h1" variant="h4" align="center">
-            Sign Up
+          <Typography component="h1" variant="h5" align="center" sx={{ fontWeight: 600, mb: 1 }}>
+            Create Account
+          </Typography>
+          <Typography variant="body2" align="center" color="text.secondary" sx={{ mb: 2 }}>
+            Join your academic community today
           </Typography>
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
             {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}

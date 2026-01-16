@@ -57,10 +57,10 @@ const Login = () => {
             <div className="w-20 h-20 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full mx-auto mb-4 flex items-center justify-center shadow-lg">
               <span className="text-white text-2xl font-bold">UC</span>
             </div>
-            <h1 className="text-4xl font-extrabold bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent mb-3 tracking-wide">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
               University Club Portal
             </h1>
-            <p className="text-gray-600 font-light text-lg tracking-wider">Welcome to your academic community</p>
+            <p className="text-gray-600 text-base">Sign in to access your academic community</p>
           </div>
 
           {/* Error Message */}
