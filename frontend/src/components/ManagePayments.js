@@ -351,9 +351,9 @@ const ManagePayments = () => {
 
         {(!payments || payments.length === 0) ? (
           <div className="text-center py-12">
-            <CurrencyDollarIcon className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-400 mb-2">No payments yet</h3>
-            <p className="text-gray-500">No payment submissions have been received for your club events.</p>
+            <CurrencyDollarIcon className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">No payments yet</h3>
+            <p className="text-gray-600">No payment submissions have been received for your club events.</p>
           </div>
         ) : (
           <div className="space-y-6">
@@ -455,11 +455,11 @@ const PaymentCard = ({
               </p>
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div className="flex items-center space-x-2 text-gray-300">
+              <div className="flex items-center space-x-2 text-gray-700">
                 <UserIcon className="w-4 h-4" />
                 <span>{payment.userId?.firstName} {payment.userId?.lastName} ({payment.userId?.email})</span>
               </div>
-              <div className="flex items-center space-x-2 text-gray-300">
+              <div className="flex items-center space-x-2 text-gray-700">
                 <CalendarIcon className="w-4 h-4" />
                 <span>{formatDate(payment.createdAt)}</span>
               </div>
@@ -479,26 +479,26 @@ const PaymentCard = ({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
         <div>
-          <p className="text-sm text-gray-400 mb-1">Payment Method</p>
-          <p className="text-white font-medium">
+          <p className="text-sm text-gray-600 font-medium mb-1">Payment Method</p>
+          <p className="text-gray-900 font-medium">
             {payment.paymentMethod.charAt(0).toUpperCase() + payment.paymentMethod.slice(1).replace('_', ' ')}
           </p>
         </div>
         <div>
-          <p className="text-sm text-gray-400 mb-1">Transaction ID</p>
-          <p className="text-white font-mono text-sm">{payment.transactionId || 'N/A'}</p>
+          <p className="text-sm text-gray-600 font-medium mb-1">Transaction ID</p>
+          <p className="text-gray-900 font-mono text-sm">{payment.transactionId || 'N/A'}</p>
         </div>
       </div>
 
       {payment.proofOfPayment && (
-        <div className="flex items-center space-x-2 text-sm text-blue-300 mb-4">
+        <div className="flex items-center space-x-2 text-sm text-blue-700 mb-4">
           <DocumentIcon className="w-4 h-4" />
-          <span>Payment proof uploaded</span>
+          <span>Payment proof available</span>
           <a 
             href={`${process.env.REACT_APP_BACKEND_URL}/uploads/payments/${payment.proofOfPayment}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300 underline"
+            className="text-blue-600 hover:text-blue-700 underline font-medium"
           >
             View
           </a>
@@ -506,9 +506,9 @@ const PaymentCard = ({
       )}
 
       {payment.notes && (
-        <div className="mb-4 p-3 bg-gray-800/50 rounded-lg">
-          <p className="text-sm text-gray-400 mb-1">Notes</p>
-          <p className="text-white">{payment.notes}</p>
+        <div className="mb-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <p className="text-sm text-gray-600 font-medium mb-1">Notes</p>
+          <p className="text-gray-900">{payment.notes}</p>
         </div>
       )}
 
@@ -532,7 +532,7 @@ const PaymentCard = ({
       )}
 
       {payment.status === 'approved' && payment.paidAt && (
-        <div className="text-sm text-green-300">
+        <div className="text-sm text-green-700 font-medium">
           Payment approved on: {formatDate(payment.paidAt)}
         </div>
       )}

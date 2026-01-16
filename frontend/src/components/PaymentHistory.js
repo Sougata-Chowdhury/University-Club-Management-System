@@ -160,9 +160,9 @@ const PaymentHistory = () => {
         {/* Payment History List */}
         {payments.length === 0 ? (
           <div className="text-center py-12">
-            <CurrencyDollarIcon className="w-16 h-16 text-gray-500 mx-auto mb-4" />
-            <h3 className="text-xl font-semibold text-gray-400 mb-2">No approved payments yet</h3>
-            <p className="text-gray-500">Approved payments will appear here.</p>
+            <CurrencyDollarIcon className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">No approved payments yet</h3>
+            <p className="text-gray-600">Approved payments will appear here.</p>
           </div>
         ) : (
           <div className="space-y-6">
@@ -188,7 +188,7 @@ const PaymentHistory = () => {
                 >
                   Previous
                 </button>
-                <span className="text-gray-300">
+                <span className="text-gray-700 font-medium">
                   Page {pagination.currentPage} of {pagination.totalPages}
                 </span>
                 <button
@@ -245,18 +245,18 @@ const PaymentHistoryCard = ({ payment, formatCurrency, formatDate }) => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
         <div>
-          <p className="text-sm text-gray-400 mb-1">Payment Method</p>
-          <p className="text-white font-medium">
+          <p className="text-sm text-gray-600 font-medium mb-1">Payment Method</p>
+          <p className="text-gray-900 font-medium">
             {payment.paymentMethod.charAt(0).toUpperCase() + payment.paymentMethod.slice(1).replace('_', ' ')}
           </p>
         </div>
         <div>
-          <p className="text-sm text-gray-400 mb-1">Transaction ID</p>
-          <p className="text-white font-mono text-sm">{payment.transactionId || 'N/A'}</p>
+          <p className="text-sm text-gray-600 font-medium mb-1">Transaction ID</p>
+          <p className="text-gray-900 font-mono text-sm">{payment.transactionId || 'N/A'}</p>
         </div>
         <div>
-          <p className="text-sm text-gray-400 mb-1">Approved By</p>
-          <p className="text-white text-sm">
+          <p className="text-sm text-gray-600 font-medium mb-1">Approved By</p>
+          <p className="text-gray-900 text-sm">
             {payment.approvedBy && payment.approvedBy.firstName && payment.approvedBy.lastName ? 
               `${payment.approvedBy.firstName} ${payment.approvedBy.lastName}` : 
               payment.approvedBy && (payment.approvedBy.firstName || payment.approvedBy.lastName) ?
@@ -269,27 +269,27 @@ const PaymentHistoryCard = ({ payment, formatCurrency, formatDate }) => {
 
       {payment.eventId?.date && (
         <div className="mb-4">
-          <p className="text-sm text-gray-400 mb-1">Event Date</p>
-          <p className="text-white">{formatDate(payment.eventId.date)}</p>
+          <p className="text-sm text-gray-600 font-medium mb-1">Event Date</p>
+          <p className="text-gray-900">{formatDate(payment.eventId.date)}</p>
         </div>
       )}
 
       {payment.eventId?.location && (
         <div className="mb-4">
-          <p className="text-sm text-gray-400 mb-1">Event Location</p>
-          <p className="text-white">{payment.eventId.location}</p>
+          <p className="text-sm text-gray-600 font-medium mb-1">Event Location</p>
+          <p className="text-gray-900">{payment.eventId.location}</p>
         </div>
       )}
 
       {payment.proofOfPayment && (
-        <div className="flex items-center space-x-2 text-sm text-blue-300 mb-4">
+        <div className="flex items-center space-x-2 text-sm text-blue-700 mb-4">
           <DocumentIcon className="w-4 h-4" />
           <span>Payment proof available</span>
           <a 
             href={`${process.env.REACT_APP_BACKEND_URL}${payment.proofOfPayment}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300 underline flex items-center space-x-1"
+            className="text-blue-600 hover:text-blue-700 underline font-medium flex items-center space-x-1"
           >
             <EyeIcon className="w-4 h-4" />
             <span>View</span>
@@ -298,9 +298,9 @@ const PaymentHistoryCard = ({ payment, formatCurrency, formatDate }) => {
       )}
 
       {payment.notes && (
-        <div className="p-3 bg-gray-800/50 rounded-lg">
-          <p className="text-sm text-gray-400 mb-1">Notes</p>
-          <p className="text-white">{payment.notes}</p>
+        <div className="p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <p className="text-sm text-gray-600 font-medium mb-1">Notes</p>
+          <p className="text-gray-900">{payment.notes}</p>
         </div>
       )}
     </div>
